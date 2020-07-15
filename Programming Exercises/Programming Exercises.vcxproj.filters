@@ -48,10 +48,19 @@
     <ClCompile Include="pass by array.c">
       <Filter>소스 파일</Filter>
     </ClCompile>
-    <ClCompile Include="min_max.c">
+    <ClCompile Include="bin_HB.c">
       <Filter>소스 파일</Filter>
     </ClCompile>
-    <ClCompile Include="bin_HB.c">
+    <ClCompile Include="99dan_2.c">
+      <Filter>소스 파일</Filter>
+    </ClCompile>
+    <ClCompile Include="99dan_1.c">
+      <Filter>소스 파일</Filter>
+    </ClCompile>
+    <ClCompile Include="99dan_3.c">
+      <Filter>소스 파일</Filter>
+    </ClCompile>
+    <ClCompile Include="prime.c">
       <Filter>소스 파일</Filter>
     </ClCompile>
   </ItemGroup>

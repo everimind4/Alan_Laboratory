@@ -36,7 +36,7 @@ void binary(long num)
 	int i = 0;
 	for (int i = num; i > 0; i /= 2)
 		idx++;
-	long* bin = malloc(sizeof(long*) * idx);
+	long* bin = (long*)malloc(sizeof(long*) * idx);
 	for (i = 0; i < idx; i++)
 	{
 		*(bin + i) = num % 2;
