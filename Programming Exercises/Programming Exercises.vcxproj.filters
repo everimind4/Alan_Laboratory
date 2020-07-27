@@ -15,55 +15,7 @@
     </Filter>
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="file_IO.c">
-      <Filter>소스 파일</Filter>
-    </ClCompile>
-    <ClCompile Include="seq_and_fac.c">
-      <Filter>소스 파일</Filter>
-    </ClCompile>
-    <ClCompile Include="selection sort.c">
-      <Filter>소스 파일</Filter>
-    </ClCompile>
-    <ClCompile Include="bubble sort.c">
-      <Filter>소스 파일</Filter>
-    </ClCompile>
-    <ClCompile Include="stack.c">
-      <Filter>소스 파일</Filter>
-    </ClCompile>
-    <ClCompile Include="queue.c">
-      <Filter>소스 파일</Filter>
-    </ClCompile>
     <ClCompile Include="test.c">
-      <Filter>소스 파일</Filter>
-    </ClCompile>
-    <ClCompile Include="2D_array.c">
-      <Filter>소스 파일</Filter>
-    </ClCompile>
-    <ClCompile Include="coordinate transformation.c">
-      <Filter>소스 파일</Filter>
-    </ClCompile>
-    <ClCompile Include="change_constant.c">
-      <Filter>소스 파일</Filter>
-    </ClCompile>
-    <ClCompile Include="pass by array.c">
-      <Filter>소스 파일</Filter>
-    </ClCompile>
-    <ClCompile Include="bin_HB.c">
-      <Filter>소스 파일</Filter>
-    </ClCompile>
-    <ClCompile Include="99dan_2.c">
-      <Filter>소스 파일</Filter>
-    </ClCompile>
-    <ClCompile Include="99dan_1.c">
-      <Filter>소스 파일</Filter>
-    </ClCompile>
-    <ClCompile Include="99dan_3.c">
-      <Filter>소스 파일</Filter>
-    </ClCompile>
-    <ClCompile Include="prime.c">
-      <Filter>소스 파일</Filter>
-    </ClCompile>
-    <ClCompile Include="Matrix_Multiplication.c">
       <Filter>소스 파일</Filter>
     </ClCompile>
   </ItemGroup>
