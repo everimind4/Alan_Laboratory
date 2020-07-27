@@ -15,14 +15,34 @@
     </Filter>
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="..\Programming Exercises\stack.c">
+    <ClCompile Include="DS5.6_2.cpp">
       <Filter>소스 파일</Filter>
     </ClCompile>
-    <ClCompile Include="..\Programming Exercises\selection sort.c">
+    <ClCompile Include="queue.c">
       <Filter>소스 파일</Filter>
     </ClCompile>
-    <ClCompile Include="..\Programming Exercises\queue.c">
+    <ClCompile Include="selection sort.c">
       <Filter>소스 파일</Filter>
     </ClCompile>
+    <ClCompile Include="stack.c">
+      <Filter>소스 파일</Filter>
+    </ClCompile>
+    <ClCompile Include="DS5.1.2_1.cpp">
+      <Filter>소스 파일</Filter>
+    </ClCompile>
+    <ClCompile Include="DS5.6.cpp">
+      <Filter>소스 파일</Filter>
+    </ClCompile>
+    <ClCompile Include="stack_match.cpp">
+      <Filter>소스 파일</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="linkedstack.h">
+      <Filter>헤더 파일</Filter>
+    </ClInclude>
+    <ClInclude Include="arraystack.h">
+      <Filter>헤더 파일</Filter>
+    </ClInclude>
   </ItemGroup>
 </Project>

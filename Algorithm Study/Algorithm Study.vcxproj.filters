@@ -15,28 +15,34 @@
     </Filter>
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="..\Programming Exercises\99dan_1.c">
+    <ClCompile Include="99dan_3.c">
       <Filter>소스 파일</Filter>
     </ClCompile>
-    <ClCompile Include="..\Programming Exercises\99dan_2.c">
+    <ClCompile Include="bubble sort.c">
       <Filter>소스 파일</Filter>
     </ClCompile>
-    <ClCompile Include="..\Programming Exercises\99dan_3.c">
+    <ClCompile Include="coordinate transformation.c">
       <Filter>소스 파일</Filter>
     </ClCompile>
-    <ClCompile Include="..\Programming Exercises\coordinate transformation.c">
+    <ClCompile Include="pass by array.c">
       <Filter>소스 파일</Filter>
     </ClCompile>
-    <ClCompile Include="..\Programming Exercises\seq_and_fac.c">
+    <ClCompile Include="prime.c">
       <Filter>소스 파일</Filter>
     </ClCompile>
-    <ClCompile Include="..\Programming Exercises\bubble sort.c">
+    <ClCompile Include="seq_and_fac.c">
       <Filter>소스 파일</Filter>
     </ClCompile>
-    <ClCompile Include="..\Programming Exercises\pass by array.c">
+    <ClCompile Include="99dan_1.c">
       <Filter>소스 파일</Filter>
     </ClCompile>
-    <ClCompile Include="..\Programming Exercises\prime.c">
+    <ClCompile Include="99dan_2.c">
+      <Filter>소스 파일</Filter>
+    </ClCompile>
+    <ClCompile Include="Matrix_multiplication_1.cpp">
+      <Filter>소스 파일</Filter>
+    </ClCompile>
+    <ClCompile Include="Matrix_Multiplication_2.cpp">
       <Filter>소스 파일</Filter>
     </ClCompile>
   </ItemGroup>

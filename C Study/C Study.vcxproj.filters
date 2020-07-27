@@ -15,22 +15,25 @@
     </Filter>
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="..\Programming Exercises\bin_HB.c">
-      <Filter>소스 파일</Filter>
-    </ClCompile>
-    <ClCompile Include="..\Programming Exercises\2D_array.c">
-      <Filter>소스 파일</Filter>
-    </ClCompile>
-    <ClCompile Include="..\Programming Exercises\Matrix_Multiplication.c">
-      <Filter>소스 파일</Filter>
-    </ClCompile>
     <ClCompile Include="..\Programming Exercises\Pointer Exercise.c">
       <Filter>소스 파일</Filter>
     </ClCompile>
-    <ClCompile Include="..\Programming Exercises\file_IO.c">
+    <ClCompile Include="bin_HB.c">
       <Filter>소스 파일</Filter>
     </ClCompile>
-    <ClCompile Include="..\Programming Exercises\change_constant.c">
+    <ClCompile Include="change_constant.c">
+      <Filter>소스 파일</Filter>
+    </ClCompile>
+    <ClCompile Include="file_IO.c">
+      <Filter>소스 파일</Filter>
+    </ClCompile>
+    <ClCompile Include="Matrix_Multiplication.c">
+      <Filter>소스 파일</Filter>
+    </ClCompile>
+    <ClCompile Include="2D_array.c">
+      <Filter>소스 파일</Filter>
+    </ClCompile>
+    <ClCompile Include="Struct pointer.c">
       <Filter>소스 파일</Filter>
     </ClCompile>
   </ItemGroup>
