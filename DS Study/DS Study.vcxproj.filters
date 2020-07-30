@@ -36,6 +36,9 @@
     <ClCompile Include="stack_match.cpp">
       <Filter>소스 파일</Filter>
     </ClCompile>
+    <ClCompile Include="DS_LinkedList.cpp">
+      <Filter>소스 파일</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="linkedstack.h">
