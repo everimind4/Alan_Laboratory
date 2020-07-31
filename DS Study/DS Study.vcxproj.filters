@@ -39,12 +39,18 @@
     <ClCompile Include="DS_LinkedList.cpp">
       <Filter>소스 파일</Filter>
     </ClCompile>
+    <ClCompile Include="Mylinkedlist.cpp">
+      <Filter>소스 파일</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="linkedstack.h">
       <Filter>헤더 파일</Filter>
     </ClInclude>
     <ClInclude Include="arraystack.h">
+      <Filter>헤더 파일</Filter>
+    </ClInclude>
+    <ClInclude Include="Mylinkedlist.h">
       <Filter>헤더 파일</Filter>
     </ClInclude>
   </ItemGroup>
