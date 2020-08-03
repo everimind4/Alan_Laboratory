@@ -60,6 +60,7 @@ void MyLinkedList::Add(int id, string name, int year, int month, int day)
 
 void MyLinkedList::Insert(TNODE* _node, TNODE* node)
 {
+	
 
 }
 
@@ -70,7 +71,10 @@ void MyLinkedList::Display()
 	else
 	{
 		TNODE* temp = head;
-		// ¿€º∫¡ﬂ
+		while (temp != NULL)
+		{
+			cout << temp->id << '-' << temp->name << '-' << temp->year << '.' << temp->month << '.' << temp->day << endl;
+			temp = temp->next;
 		}
 	}
 }
