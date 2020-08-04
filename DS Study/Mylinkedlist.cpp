@@ -12,10 +12,14 @@ int main()
 	ll.Add(3, "Jake", 2012, 10, 12);
 	ll.Add(4, "Lee", 2013, 10, 13);
 	ll.Display();
-	/*	ll.Insert(1, 10, "Kim", 2019, 9, 1);
+	ll.Insert(7, 10, "Kim", 2019, 9, 1);
+	ll.Insert(2, 10, "Kim", 2019, 9, 1);
 	ll.Display();
-	ll.Delete();
-	ll.Display();*/
+	ll.Search(3);
+	ll.Delete(3);
+	ll.Search(3);
+	ll.Display();
+	ll.Search(10);
 
 	return 0;
 }

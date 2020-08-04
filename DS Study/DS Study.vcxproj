@@ -139,6 +139,7 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="01_BinaryTree_C.cpp" />
     <ClCompile Include="DS5.1.2_1.cpp">
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">true</ExcludedFromBuild>
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">true</ExcludedFromBuild>
@@ -163,6 +164,7 @@
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">true</ExcludedFromBuild>
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|x64'">true</ExcludedFromBuild>
     </ClCompile>
+    <ClCompile Include="MyDoubleLinkedList.cpp" />
     <ClCompile Include="Mylinkedlist.cpp" />
     <ClCompile Include="queue.c">
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">true</ExcludedFromBuild>
@@ -192,6 +194,7 @@
   <ItemGroup>
     <ClInclude Include="arraystack.h" />
     <ClInclude Include="linkedstack.h" />
+    <ClInclude Include="MyDoubleLinkedList.h" />
     <ClInclude Include="Mylinkedlist.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />

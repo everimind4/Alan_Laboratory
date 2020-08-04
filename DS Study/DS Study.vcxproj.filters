@@ -42,6 +42,12 @@
     <ClCompile Include="Mylinkedlist.cpp">
       <Filter>소스 파일</Filter>
     </ClCompile>
+    <ClCompile Include="MyDoubleLinkedList.cpp">
+      <Filter>소스 파일</Filter>
+    </ClCompile>
+    <ClCompile Include="01_BinaryTree_C.cpp">
+      <Filter>소스 파일</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="linkedstack.h">
@@ -51,6 +57,9 @@
       <Filter>헤더 파일</Filter>
     </ClInclude>
     <ClInclude Include="Mylinkedlist.h">
+      <Filter>헤더 파일</Filter>
+    </ClInclude>
+    <ClInclude Include="MyDoubleLinkedList.h">
       <Filter>헤더 파일</Filter>
     </ClInclude>
   </ItemGroup>
