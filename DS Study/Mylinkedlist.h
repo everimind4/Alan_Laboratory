@@ -8,7 +8,7 @@ typedef struct _tnode {
 	string name;
 	int year, month, day;
 	struct _tnode* next;
-} TNODE;
+}TNODE;
 
 class MyLinkedList {
 	TNODE* head;
@@ -100,7 +100,7 @@ void MyLinkedList::Display()
 void MyLinkedList::Delete(int id)
 {
 	TNODE* temp = head;
-	while (temp->next->id - id)
+	while (temp->next->id != id)
 		temp = temp->next;
 	temp->next = temp->next->next;
 }
@@ -108,9 +108,9 @@ void MyLinkedList::Delete(int id)
 void MyLinkedList::Search(int id)
 {
 	TNODE* temp = head;
-	while (temp->id - id)
+	while (temp->id != id)
 	{
-		if (temp->next == NULL && temp->id - id)
+		if (temp->next == NULL && temp->id != id)
 		{
 			cout << "The node for that id does not found." << endl << endl;
 			return;
