@@ -59,7 +59,11 @@ void MyDoubleLinkedList::AddF(DNODE* node)
 void MyDoubleLinkedList::AddB(DNODE* node)
 {
 	if (head == nullptr)
+	{
 		head = node;
+		head->prev = nullptr;
+		head->next = nullptr;
+	}
 	else
 	{
 		DNODE* temp = head;
@@ -96,35 +100,99 @@ void MyDoubleLinkedList::AddB(int id, string name, int year, int month, int day)
 void MyDoubleLinkedList::Insert(int i_id, int id, string name, int year, int month, int day)
 {
 	DNODE* temp = head;
-	while (temp->prev != nullptr)
-
-		
-
+	while (temp->prev != nullptr && temp->id != i_id)
+		temp = temp->prev;
+	if (temp->prev == nullptr)
+	{
+		temp = head;
+		while (temp->id != i_id)
+		{
+			if (temp->next == NULL && temp->id != i_id)
+			{
+				cout << "The id '" << i_id << "', the location you want to add does not exist in the list." << endl << endl;
+				return;
+			}
+			temp = temp->next;
+		}
+			
+	}
 	DNODE* _insert = new DNODE;
 	_insert->id = id;
 	_insert->name = name;
 	_insert->year = year;
 	_insert->month = month;
 	_insert->day = day;
-	AddF(_addf);
+	_insert->prev = temp;
+	_insert->next = temp->next;
+	if (temp->next)
+		(temp->next)->prev = _insert;
+	temp->next = _insert;
 }
 
-void MyDoubleLinkedList::Delete(int)
+void MyDoubleLinkedList::Delete(int id)
 {
-
+	DNODE* temp = head;
+	while (temp->prev != nullptr && temp->id != id)
+		temp = temp->prev;
+	if (temp->prev == nullptr)
+	{
+		temp = head;
+		while (temp->next != nullptr && temp->id != id)
+			temp = temp->next;
+	}
+		
+	if (temp->prev == nullptr && temp->next)
+		temp->next->prev = nullptr;
+	else if (temp->next == nullptr && temp->prev)
+		temp->prev->next = nullptr;
+	else if (temp->next && temp->prev)
+	{
+		temp->next->prev = temp->prev;
+		temp->prev->next = temp->next;
+	}
 }
 
-void MyDoubleLinkedList::Search(int)
+void MyDoubleLinkedList::Search(int id)
 {
-
+	DNODE* temp = head;
+	while (temp->prev != nullptr && temp->id != id)
+		temp = temp->prev;
+	if (temp->prev == nullptr)
+	{
+		temp = head;
+		while (temp->next != nullptr && temp->id != id)
+			temp = temp->next;
+	}
+	if (temp->next == nullptr && temp->id != id)
+	{
+		cout << "The node for that id does not found." << endl << endl;
+		return;
+	}
+	cout << temp->id << '-' << temp->name << '-' << temp->year << '.' << temp->month << '.' << temp->day << endl << endl;
 }
 
 void MyDoubleLinkedList::DisplayF()
 {
-
+	DNODE* temp = head;
+	while (temp->prev != nullptr)
+		temp = temp->prev;
+	while (temp != nullptr)
+	{
+		cout << temp->id << '-' << temp->name << '-' << temp->year << '.' << temp->month << '.' << temp->day << endl;
+		temp = temp->next;
+	}
+	cout << endl;
 }
 
 void MyDoubleLinkedList::DisplayB()
 {
-
+	DNODE* temp = head;
+	while (temp->next != nullptr)
+		temp = temp->next;
+	while (temp != nullptr)
+	{
+		cout << temp->id << '-' << temp->name << '-' << temp->year << '.' << temp->month << '.' << temp->day << endl;
+		temp = temp->prev;
+	}
+	cout << endl;
 }
