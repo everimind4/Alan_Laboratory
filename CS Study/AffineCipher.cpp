@@ -19,7 +19,7 @@ void main()
 				cout << endl << "Wrong number. Try again." << endl << endl;
 		}
 		cout << endl << "key 1 : "; cin >> key1;
-		key1_i = //작성중
+		key1_i; //작성중
 		cout << endl << "key 2 : "; cin >> key2;
 		getchar();
 		cout << endl << "string (q to quit): "; cin.get(str, 100);
