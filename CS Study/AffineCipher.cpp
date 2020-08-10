@@ -89,6 +89,5 @@ void main()
 			cout << str[i];
 		}
 		cout << endl << endl;
-		getchar();
 	}
 }
