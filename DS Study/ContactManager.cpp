@@ -66,7 +66,6 @@ void HashTable::Load()
 void HashTable::Save(char* data, size_t len)
 {
 	Contact* n = new Contact;
-	int  data_idx = 0;
 	string s = "";
 	vector<string> temp;
 	for (int i = 0; i < (int)len + 1; i++)
@@ -138,7 +137,7 @@ void HashTable::Display(Contact* t)
 		<< '\t' << "Birth  : " << t->birth << endl << endl;
 }
 
-void HashTable::DisplayAll()
+void HashTable::Display()
 {
 	cout << STAR << endl;
 	for (int i = 0; i < BucketSize; i++)

@@ -25,6 +25,6 @@ public:
 	void Save(char*, size_t);	
 	void Insert(string, string, string, string, string, string);
 	void Display(Contact*);
-	void DisplayAll();
+	void Display();
 	void Sync();
 };
