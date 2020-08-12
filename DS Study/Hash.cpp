@@ -71,6 +71,40 @@ void MyHash::hash_insert(int _id, string _name, int y, int m, int d)
     }
 }
 
+void MyHash::hash_delete(int id)
+{
+    int h = hash_func(id);
+    NODE* d = bucket[h];
+    while (d != NULL)
+    {
+        if (d->id == id)
+            break;
+        d = d->next;
+    }
+    cout << "Deleted Node : ";
+    if (d == NULL)
+    {
+        cout << "Not found node." << endl << endl;
+        return;
+    }
+    else if (d->next == NULL)
+        bucket[h] = NULL;
+    else if (d->next != NULL)
+    {
+        NODE* t = bucket[h];
+        if (t == d)
+        {
+            bucket[h] = t->next;
+            return;
+        }
+        while (t->next != d)
+            t = t->next;
+        t->next = t->next->next;
+        delete d;
+    }  
+    cout << id << endl << endl;
+}
+
 void MyHash::hash_displaynode(NODE* t)
 {
     cout << '\t' << t->id << ',' << t->name << ',' << t->year << '-' << t->month << '-' << t->day << endl;
@@ -88,18 +122,25 @@ void MyHash::hash_display()
             t = t->next;
         }
     }
+    cout << endl;
 }
 
-NODE* MyHash::hash_search(int id)
+void MyHash::hash_search(int id)
 {
     int h = hash_func(id);
-
     NODE* t = bucket[h];
     while (t != NULL)
     {
         if (t->id == id)
-            return t;
+            break;
         t = t->next;
     }
-    return NULL;
+    if (t != NULL)
+    {
+        cout << "Search Node : " << id << endl;
+        MyHash::hash_displaynode(t);
+        cout << endl;
+    }        
+    else
+        cout << "Not found node." << endl << endl;
 }

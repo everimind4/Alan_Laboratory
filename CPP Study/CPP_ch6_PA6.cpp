@@ -15,6 +15,8 @@ public:
 	void Modulate(int);
 	friend istream& operator >> (istream&, Note&);
 	friend ostream& operator << (ostream&, Note&);
+	Note& operator++();
+	Note& operator++()int;
 };
 
 class NoteImpl {

@@ -1,5 +1,3 @@
-#include <stdio.h>
-#include <stdlib.h>
 #include "Hash.h"
 
 void main()
@@ -16,14 +14,14 @@ void main()
 	mh.hash_insert(15, "»´ø¿µø", 2000, 1, 1);
 	mh.hash_insert(21, "±Ë¿œµø", 2000, 1, 1);
 	mh.hash_insert(31, "¿Ã¿œµø", 2000, 1, 1);
-
+	
 	mh.hash_display();
 
-	printf("search node : 15\n");
-	NODE* t = mh.hash_search(15);
-	if (t != NULL)
-		mh.hash_displaynode(t);
-	else
-		printf("\tnot found node\n");
+	mh.hash_search(15);
 
+	mh.hash_delete(21);
+	mh.hash_display();
+
+	mh.hash_delete(27);
+	mh.hash_display();
 }

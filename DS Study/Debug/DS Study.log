@@ -1,3 +1,2 @@
-﻿  ContactManager_src.cpp
-C:\Users\직업능력개발훈련 401호_20번\Documents\GitHub\Alan_Laboratory\DS Study\ContactManager_src.cpp(4,1): warning C4326: 'main'의 반환 형식이 'int'이어야 하는데 'void'입니다.
+﻿  ContactManager.cpp
   DS Study.vcxproj -> C:\Users\직업능력개발훈련 401호_20번\Documents\GitHub\Alan_Laboratory\Debug\DS Study.exe

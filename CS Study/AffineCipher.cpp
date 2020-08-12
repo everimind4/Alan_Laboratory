@@ -21,7 +21,6 @@ void main()
 		cout << endl << "key 1 : "; cin >> key1;
 		key1_i; //¿€º∫¡ﬂ
 		cout << endl << "key 2 : "; cin >> key2;
-		getchar();
 		cout << endl << "string (q to quit): "; cin.get(str, 100);
 		len = strlen(str);
 		if (mode == 1)

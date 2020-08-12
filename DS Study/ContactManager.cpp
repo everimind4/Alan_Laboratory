@@ -1,6 +1,9 @@
 #define _CRT_SECURE_NO_WARNINGS
+#include <fstream>
 #include "ContactManager.h"
 #include <vector>
+
+using namespace std;
 
 #define STAR "****************************************"
 
@@ -18,7 +21,7 @@ Contact::Contact()
 HashTable::HashTable(int size)
 {
 	BucketSize = size;
-	bucket = (Contact**)new (Contact * [BucketSize]);
+	bucket = new Contact*[BucketSize];
 	if (bucket == NULL)
 	{
 		cout << "memory allocation failed!" << endl;
@@ -26,7 +29,7 @@ HashTable::HashTable(int size)
 	}
 	for (int i = 0; i < BucketSize; i++)
 	{
-		bucket[i] = (Contact*) new Contact;
+		bucket[i] = new Contact;
 		bucket[i] = NULL;
 	}
 }
@@ -37,32 +40,36 @@ int HashTable::F_Hash(int key)
 	return h;
 }
 
-void HashTable::GetData()
+void HashTable::Load()
 {
-	FILE* fp = fopen("contact.txt", "rt");
-	if (fp == nullptr)
+	ifstream file;
+	ofstream file_backup;
+	file.open("contact.txt");
+	file_backup.open("contact_backup.txt");
+	if (!file.is_open())
 	{
-		printf("Fail to open file!");
+		cout << "Fail to open file!" << endl;
 		return;
 	}
 	char fpln[64];
-	while (fgets(fpln, 64, fp) != NULL)
+	while (file.peek() != EOF)
 	{
+		file.getline(fpln, 64);
 		size_t len = strlen(fpln);
-		if (fpln[len - 1] == '\n')
-			fpln[len - 1] = '\0';
-		SaveData(fpln, len);
+		file_backup << fpln << endl;
+		Save(fpln, len);
 	}
-	fclose(fp);
-}
+	file.close();
+	file_backup.close();
+	}
 
-void HashTable::SaveData(char* data, size_t len)
+void HashTable::Save(char* data, size_t len)
 {
-	Contact* n = (Contact*)new Contact;
-	int i = 0, j = 0, data_idx = 0;
+	Contact* n = new Contact;
+	int  data_idx = 0;
 	string s = "";
 	vector<string> temp;
-	for (i; i < (int)len; i++)
+	for (int i = 0; i < (int)len + 1; i++)
 	{
 		if (data[i] != ',' && data[i] != '\0')
 		{
@@ -98,7 +105,7 @@ void HashTable::SaveData(char* data, size_t len)
 
 void HashTable::Insert(string name, string mobile_tel, string office_tel, string home_tel, string e_mail, string birth)
 {
-	Contact* t = (Contact*)new Contact;
+	Contact* t = new Contact;
 	t->name = name;
 	t->mobile_tel = mobile_tel;
 	t->office_tel = office_tel;
@@ -121,17 +128,17 @@ void HashTable::Insert(string name, string mobile_tel, string office_tel, string
 	}
 }
 
-void HashTable::DisplayContact(Contact* t)
+void HashTable::Display(Contact* t)
 {
-	cout << '\t' << "Name : " << t->name << endl
+	cout << '\t' << "Name   : " << t->name << endl
 		<< '\t' << "Mobile : " << t->mobile_tel << endl
 		<< '\t' << "Office : " << t->office_tel << endl
-		<< '\t' << "Home : " << t->home_tel << endl
+		<< '\t' << "Home   : " << t->home_tel << endl
 		<< '\t' << "E-mail : " << t->e_mail << endl
-		<< '\t' << "Birth : " << t->birth << endl << endl;
+		<< '\t' << "Birth  : " << t->birth << endl << endl;
 }
 
-void HashTable::Display()
+void HashTable::DisplayAll()
 {
 	cout << STAR << endl;
 	for (int i = 0; i < BucketSize; i++)
@@ -140,9 +147,30 @@ void HashTable::Display()
 		Contact* t = bucket[i];
 		while (t != NULL)
 		{
-			DisplayContact(t);
+			Display(t);
 			t = t->next;
 		}
 	}
 	cout << STAR << endl << endl;
+}
+
+void HashTable::Sync()
+{
+	ofstream file;
+	file.open("contact.txt");
+	if (!file.is_open())
+	{
+		printf("Fail to open file!");
+		return;
+	}	
+	for (int i = 0; i < BucketSize; i++)
+	{
+		Contact* t = bucket[i];
+		while (t != NULL)
+		{
+			string contact = t->name + "," + t->mobile_tel + "," + t->office_tel + "," + t->home_tel + "," + t->e_mail + "," + t->birth;
+			file << contact << endl;
+			t = t->next;
+		}
+	}
 }

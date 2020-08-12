@@ -16,7 +16,7 @@ class List {
 public:
 	List(int data = 0);
 	void Add(int);
-	void Add(int, int);
+	void Insert(int, int);
 	void Show();
 };
 
@@ -41,10 +41,10 @@ void List::Add(int data)
 			temp = temp->next;
 		temp->next = New;
 	}
-	List::size++;
+	size++;
 }
 
-void List::Add(int data, int idx)
+void List::Insert(int idx, int data)
 {
 	if (idx <= 0)
 		cout << "Wrong index!" << endl;
@@ -54,27 +54,15 @@ void List::Add(int data, int idx)
 		cout << "You have entered an index number that is greater than the length of the list." << endl;
 	else
 	{
-		Node* Inserted = head;
-		for (int i = 0; i < idx; i++)
-			Inserted = Inserted->next;
-		Node* temp = Inserted;
-		// ¿€º∫¡ﬂ
-
+		Node* ins = head;
+		for (int i = 0; i < idx - 1; i++)
+			ins = ins->next;
+		Node* n = new Node;
+		n->data = data;
+		n->next = ins->next;
+		ins->next = n;
 	}
-		
-	/*Node* NewNode = new Node;
-	NewNode->data = data;
-	NewNode->next = NULL;
-	if (head->next == NULL)
-		head->next = NewNode;
-	else
-	{
-		Node* temp = head;
-		while (temp->next != NULL)
-			temp = temp->next;
-		temp->next = NewNode;
-	}
-	List::size++;*/
+	size++;
 }
 
 void List::Show()
@@ -92,10 +80,11 @@ void List::Show()
 
 int main()
 {
-	List test(7);
-	test.Add(3);
-	test.Add(5);
-	test.Show();
-	test.Add(4, 3);
+	List l(7);
+	l.Add(3);
+	l.Add(5);
+	l.Show();
+	l.Insert(2, 4);
+	l.Show();
 	return 0;
 }

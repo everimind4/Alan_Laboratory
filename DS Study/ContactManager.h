@@ -21,9 +21,10 @@ public:
 	HashTable() : BucketSize(0), bucket(NULL) {}
 	HashTable(int);
 	int F_Hash(int);
-	void GetData();
-	void SaveData(char*, size_t);	
+	void Load();
+	void Save(char*, size_t);	
 	void Insert(string, string, string, string, string, string);
-	void DisplayContact(Contact*);
-	void Display();
+	void Display(Contact*);
+	void DisplayAll();
+	void Sync();
 };
