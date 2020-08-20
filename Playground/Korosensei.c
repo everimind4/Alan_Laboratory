@@ -2,6 +2,12 @@
 #include <stdio.h>
 
 //12345678901234567890123456789012345678901
+//o  o ooo oooo ooo ooo ooo o   o ooo ooo o
+//o o  o o o  o o o o   o   oo  o o   o   o
+//oo   o o oooo o o ooo ooo o o o ooo ooo o
+//o o  o o o o  o o   o o   o  oo   o o   o
+//o  o ooo o  o ooo ooo ooo o   o ooo ooo o
+//
 //ooooooooooooooooooooooooooooooooooooooooo
 //ooooooooooooooooooooooooooooooooooooooooo
 //ooooooooooooooooooooooooooooooooooooooooo
@@ -35,6 +41,11 @@ void main()
 		scanf("%c", &ch);
 		getchar();
 		puts("");
+		printf("%c  %c %c%c%c %c%c%c%c %c%c%c %c%c%c %c%c%c %c   %c %c%c%c %c%c%c %c\n", ch, ch, ch, ch, ch, ch, ch, ch, ch, ch, ch, ch, ch, ch, ch, ch, ch, ch, ch, ch, ch, ch, ch, ch, ch, ch, ch);
+		printf("%c %c  %c %c %c  %c %c %c %c   %c   %c%c  %c %c   %c   %c\n", ch, ch, ch, ch, ch, ch, ch, ch, ch, ch, ch, ch, ch, ch, ch, ch);
+		printf("%c%c   %c %c %c%c%c%c %c %c %c%c%c %c%c%c %c %c %c %c%c%c %c%c%c %c\n", ch, ch, ch, ch, ch, ch, ch, ch, ch, ch, ch, ch, ch, ch, ch, ch, ch, ch, ch, ch, ch, ch, ch, ch, ch, ch);
+		printf("%c %c  %c %c %c %c  %c %c   %c %c   %c  %c%c   %c %c   %c\n", ch, ch, ch, ch, ch, ch, ch, ch, ch, ch, ch, ch, ch, ch, ch, ch);
+		printf("%c  %c %c%c%c %c  %c %c%c%c %c%c%c %c%c%c %c   %c %c%c%c %c%c%c %c\n\n", ch, ch, ch, ch, ch, ch, ch, ch, ch, ch, ch, ch, ch, ch, ch, ch, ch, ch, ch, ch, ch, ch, ch, ch, ch);
 		for (int i = 0; i < 4; i++)
 		{
 			for (int j = 0; j <= 40; j++)	printf("%c", ch); puts("");
