@@ -1,0 +1,5 @@
+﻿  readtext.cpp
+  typingpractice.cpp
+C:\Users\직업능력개발훈련 401호_2번\Documents\GitHub\Alan_Laboratory\TypingPractice\typingpractice.cpp(5,1): warning C4326: 'main'의 반환 형식이 'int'이어야 하는데 'void'입니다.
+  코드를 생성하고 있습니다...
+  TypingPractice.vcxproj -> C:\Users\직업능력개발훈련 401호_2번\Documents\GitHub\Alan_Laboratory\Debug\TypingPractice.exe
