@@ -1,6 +1,2 @@
-﻿  MazeRunner.c
-C:\Users\직업능력개발훈련 401호_2번\Documents\GitHub\Alan_Laboratory\MazeRunner\MazeRunner.c(8,1): error C2085: 'main': 정식 매개 변수 목록에 없습니다.
-C:\Users\직업능력개발훈련 401호_2번\Documents\GitHub\Alan_Laboratory\MazeRunner\MazeRunner.c(8,1): error C2143: 구문 오류: ';'이(가) '{' 앞에 없습니다.
-C:\Users\직업능력개발훈련 401호_2번\Documents\GitHub\Alan_Laboratory\MazeRunner\MazeRunner.c(12,23): error C2065: 'ALIGNCENTER': 선언되지 않은 식별자입니다.
-C:\Users\직업능력개발훈련 401호_2번\Documents\GitHub\Alan_Laboratory\MazeRunner\MazeRunner.c(12,23): warning C4047: '함수': 'const char *const '의 간접 참조 수준이 'int'과(와) 다릅니다.
-C:\Users\직업능력개발훈련 401호_2번\Documents\GitHub\Alan_Laboratory\MazeRunner\MazeRunner.c(12,12): warning C4024: 'printf': 형식 및 실제 매개 변수 1의 형식이 서로 다릅니다.
+﻿  Functions.c
+  MazeRunner.vcxproj -> C:\Users\직업능력개발훈련 401호_2번\Documents\GitHub\Alan_Laboratory\MazeRunner\Debug\MazeRunner.exe

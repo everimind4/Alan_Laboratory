@@ -18,5 +18,13 @@
     <ClCompile Include="MazeRunner.c">
       <Filter>소스 파일</Filter>
     </ClCompile>
+    <ClCompile Include="Functions.c">
+      <Filter>소스 파일</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="MazeRunner.h">
+      <Filter>헤더 파일</Filter>
+    </ClInclude>
   </ItemGroup>
 </Project>
