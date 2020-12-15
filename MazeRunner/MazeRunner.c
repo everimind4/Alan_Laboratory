@@ -9,5 +9,6 @@ int main()
     CursorView(0);
     DrawTitle();
     DrawMenu();
+    PrintCopyright();
     SelectMenu();
 }

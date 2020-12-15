@@ -8,6 +8,7 @@
 #define DOWN 80
 #define LEFT 75
 #define RIGHT 77
+#define ENTER 13
 
 void Fullscreen() {
     SetConsoleDisplayMode(GetStdHandle(STD_OUTPUT_HANDLE), CONSOLE_FULLSCREEN_MODE, 0);
@@ -69,36 +70,44 @@ void DrawMenu() {
     go(row, col++); printf("бсбсбсбс  бс  бс  бс    бс");
 }
 
+void PrintCopyright() {
+    go(88, 64); printf("Copyright 2020. Youngin Choi All right reserved.");
+}
+
 void SelectMenu() {
-    char arrow;
+    char key;
     int menu = 0;
-    int difficulty = 0;
+    int level = 0;
     while (1) {
         if (_kbhit()) {
-            arrow = _getch();
-            if (arrow == -32) {
-                arrow = _getch();
-                switch (arrow) {
+            key = _getch();
+            if (key == ENTER) {
+                printf("0");
+                break;
+            }                
+            else if (key == -32) {
+                key = _getch();
+                switch (key) {
                 case UP:
                     menu = (menu + 1) % 2;
                     break;
                 case DOWN:
-                    menu = (menu - 1) % 2;
+                    menu--;
+                    if (menu < 0) menu += 2;
                     break;
                 case LEFT:
-                    difficulty = (difficulty - 1) % 3;
+                    level--;
+                    if (level < 0) level += 3;
                     break;
                 case RIGHT:
-                    difficulty = (difficulty + 1) % 3;
+                    level = (level + 1) % 3;
                     break;
                 }
                 switch (menu) {
                 case 0:
-                    go(0, 0);
                     printf("1");
                     break;
                 case 1:
-                    go(0, 0);
                     printf("2");
                     break;
                 }
