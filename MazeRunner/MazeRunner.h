@@ -18,4 +18,4 @@ void KOREAN(int, int);
 void Play(int);
 void MazeGenerator(int, int);
 void ShowStartNEnd(int, int);
-void MazeRunner();
+void MazeRunner(int, int);
