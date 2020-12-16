@@ -264,7 +264,7 @@ void Play(int option) {
     default: row = baserow + option * 10, col = basecol + option * 5;
     MazeGenerator(row, col);
     ShowStartNEnd(row, col);
-    MazeRunner();
+    MazeRunner(row, col);
 }
 
 void MazeGenerator(int row, int col) {
@@ -332,6 +332,9 @@ void ShowStartNEnd(int row, int col) {
     }
 }
 
-void MazeRunner() {
-
+void MazeRunner(int row, int col) {
+    // ¡ã¡å¢¸¢º
+    SetConsoleTextAttribute(GetStdHandle(STD_OUTPUT_HANDLE), 4 | 3 << 4);
+    go(120 - row * 2 - 1, 35 - col); printf("¢º");
+    
 }
