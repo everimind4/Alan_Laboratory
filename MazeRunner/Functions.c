@@ -347,51 +347,53 @@ void MazeRunner(int row, int col) {
             if (key == ESC) {
                 SetConsoleTextAttribute(GetStdHandle(STD_OUTPUT_HANDLE), 14 | 3 << 4);
                 int printrow = 120, printcol = 35 - col;
-                if (pause == 0) {
-                    go(maze_x + x, maze_y + y);
-                    printf("  ");
+                go(maze_x + x * 2, maze_y + y);
+                printf("  ");
+                go(printrow - row * 2 + 1, printcol++);
+                for (int i = 1; i < col * 2; i++) {
+                    for (int j = 1; j < row * 2; j++)
+                        printf("  ");
                     go(printrow - row * 2 + 1, printcol++);
-                    for (int i = 1; i < col * 2; i++) {
-                        for (int j = 1; j < row * 2; j++)
-                            printf("  ");
+                }
+                printrow = 96, printcol = 33 - col / 2;
+                go(printrow, printcol++); printf("бсбсбсбс    бсбс    бс    бс  бсбсбсбс  бсбсбсбс");
+                go(printrow, printcol++); printf("бс    бс  бс    бс  бс    бс  бс        бс");
+                go(printrow, printcol++); printf("бсбсбс    бсбсбсбс  бс    бс  бсбсбсбс  бсбсбсбс");
+                go(printrow, printcol++); printf("бс        бс    бс  бс    бс        бс  бс");
+                go(printrow, printcol);   printf("бс        бс    бс    бсбс    бсбсбсбс  бсбсбсбс");
+                pause++;
+                while (1) {
+                    key = _getch();
+                    if (key == ESC) {
+                        SetConsoleTextAttribute(GetStdHandle(STD_OUTPUT_HANDLE), 14 | 3 << 4);
+                        printrow = 120, printcol = 35 - col;
                         go(printrow - row * 2 + 1, printcol++);
+                        for (int i = 1; i < col * 2; i++) {
+                            for (int j = 1; j < row * 2; j++)
+                                if (*(maze + (row * 2 + 1) * i + j) == 1)
+                                    printf("бс");
+                                else
+                                    printf("  ");
+                            go(printrow - row * 2 + 1, printcol++);
+                        }
+                        go(maze_x + x * 2, maze_y + y);
+                        SetConsoleTextAttribute(GetStdHandle(STD_OUTPUT_HANDLE), 4 | 3 << 4);
+                        switch (direction) {
+                        case UP:
+                            printf("бу");
+                            break;
+                        case DOWN:
+                            printf("бх");
+                            break;
+                        case LEFT:
+                            printf("в╕");
+                            break;
+                        case RIGHT:
+                            printf("в║");
+                            break;
+                        }
+                        break;
                     }
-                    printrow = 96, printcol = 33 - col / 2;
-                    go(printrow, printcol++); printf("бсбсбсбс    бсбс    бс    бс  бсбсбсбс  бсбсбсбс");
-                    go(printrow, printcol++); printf("бс    бс  бс    бс  бс    бс  бс        бс");
-                    go(printrow, printcol++); printf("бсбсбс    бсбсбсбс  бс    бс  бсбсбсбс  бсбсбсбс");
-                    go(printrow, printcol++); printf("бс        бс    бс  бс    бс        бс  бс");
-                    go(printrow, printcol);   printf("бс        бс    бс    бсбс    бсбсбсбс  бсбсбсбс");
-                    pause++;
-                }   
-                else {
-                    go(maze_x + x, maze_y + y);
-                    SetConsoleTextAttribute(GetStdHandle(STD_OUTPUT_HANDLE), 4 | 3 << 4);
-                    switch (direction) {
-                    case UP:
-                        printf("бу");
-                        break;
-                    case DOWN:
-                        printf("бх");
-                        break;
-                    case LEFT:
-                        printf("в╕");
-                        break;
-                    case RIGHT:
-                        printf("в║");
-                        break;
-                    }
-                    SetConsoleTextAttribute(GetStdHandle(STD_OUTPUT_HANDLE), 14 | 3 << 4);
-                    go(printrow - row * 2 + 1, printcol++);
-                    for (int i = 1; i < col * 2; i++) {
-                        for (int j = 1; j < row * 2; j++)
-                            if (*(maze + (row * 2 + 1) * i + j) == 1)
-                                printf("бс");
-                            else
-                                printf("  ");
-                        go(printrow - row * 2 + 1, printcol++);
-                    }
-                    pause--;
                 }
                 SetConsoleTextAttribute(GetStdHandle(STD_OUTPUT_HANDLE), 4 | 3 << 4);
                 continue;
