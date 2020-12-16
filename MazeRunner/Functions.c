@@ -10,6 +10,7 @@
 #define LEFT 75
 #define RIGHT 77
 #define ENTER 13
+#define ESC 27
 
 #define MENUINITROW 90
 #define MENUINITCOL 35
@@ -263,7 +264,7 @@ void Play(int option) {
     switch (option)
     default: row = baserow + option * 10, col = basecol + option * 5;
     MazeGenerator(row, col);
-    ShowStartNEnd(row, col);
+    // ShowStartNEnd(row, col);
     MazeRunner(row, col);
 }
 
@@ -333,8 +334,78 @@ void ShowStartNEnd(int row, int col) {
 }
 
 void MazeRunner(int row, int col) {
-    // ▲▼◀▶
     SetConsoleTextAttribute(GetStdHandle(STD_OUTPUT_HANDLE), 4 | 3 << 4);
-    go(120 - row * 2 - 1, 35 - col); printf("▶");
-    
+    int maze_x = 120 - row * 2 - 1, maze_y = 35 - col;
+    int x = 0, y = 0, direction = 0;
+    int pause = 0;
+    go(maze_x, maze_y); printf("▶");
+    char key;
+    while (1) {
+        if (_kbhit()) {
+            key = _getch();
+            if (key == ESC) {
+                SetConsoleTextAttribute(GetStdHandle(STD_OUTPUT_HANDLE), 14 | 3 << 4);
+                int printrow = 120, printcol = 35 - col;
+                if (pause == 0) {
+                    go(maze_x + x, maze_y + y);
+                    printf("  ");
+                    go(printrow - row * 2 + 1, printcol++);
+                    for (int i = 1; i < col * 2; i++) {
+                        for (int j = 1; j < row * 2; j++)
+                            printf("  ");
+                        go(printrow - row * 2 + 1, printcol++);
+                    }
+                    pause++;
+                }   
+                else {
+                    go(maze_x + x, maze_y + y);
+                    SetConsoleTextAttribute(GetStdHandle(STD_OUTPUT_HANDLE), 4 | 3 << 4);
+                    switch (direction) {
+                    case 0:
+                        printf("▶");
+                        break;
+                    case 1:
+                        printf("▲");
+                        break;
+                    case 2:
+                        printf("◀");
+                        break;
+                    case 3:
+                        printf("▼");
+                        break;
+                    }
+                    SetConsoleTextAttribute(GetStdHandle(STD_OUTPUT_HANDLE), 14 | 3 << 4);
+                    go(printrow - row * 2 + 1, printcol++);
+                    for (int i = 1; i < col * 2; i++) {
+                        for (int j = 1; j < row * 2; j++)
+                            if (*(maze + (row * 2 + 1) * i + j) == 1)
+                                printf("■");
+                            else
+                                printf("  ");
+                        go(printrow - row * 2 + 1, printcol++);
+                    }
+                    pause--;
+                }
+                SetConsoleTextAttribute(GetStdHandle(STD_OUTPUT_HANDLE), 4 | 3 << 4);
+                continue;
+            }
+            else if (key == -32) {
+                key = _getch();
+                switch (key) {
+                case UP:
+                    // 위로 이동 (벽이면 제자리)       캐릭터 자리에 ▲ 출력
+                    break;
+                case DOWN:
+                    // 아래로 이동 (벽이면 제자리)     캐릭터 자리에 ▼ 출력
+                    break;
+                case LEFT:
+                    // 아래로 이동 (벽이면 제자리)     캐릭터 자리에 ◀ 출력
+                    break;
+                case RIGHT:
+                    // 아래로 이동 (벽이면 제자리)     캐릭터 자리에 ▶ 출력
+                    break;
+                }
+            }
+        }
+    }
 }
