@@ -20,7 +20,7 @@ void Fullscreen() {
 }
 
 void SetConsoleColor() {
-    system("color 3E"); // Set Console Color
+    system("color 3E");
 }
 
 void ClearConsole() {
@@ -100,23 +100,20 @@ int SelectMenu() {
                 key = _getch();
                 switch (key) {
                 case UP:
-                    menu--;
-                    if (menu < 0) menu += 3; 
+                    if (menu != 0) menu--;
                     break;
                 case DOWN:
-                    menu = (menu + 1) % 3;
+                    if (menu != 2) menu++;
                     break;
                 case LEFT:
                     if (menu == 0) {
-                        level--;
-                        if (level < 0) level += 5;
+                        if (level != 0) level--;
                         ShowLevel(level);
                     }
                     break;
                 case RIGHT:
                     if (menu == 0) {
-                        level++;
-                        if (level >= 5) level %= 5;
+                        if (level != 4) level++;
                         ShowLevel(level);
                     }
                     break;
@@ -209,11 +206,13 @@ void ClearLevelInfo(int row, int col) {
 
 void NEWBIE(int row, int col) {
     row -= 8;
+    SetConsoleTextAttribute(GetStdHandle(STD_OUTPUT_HANDLE), 10 | 3 << 4);
     go(row, col);       printf("■      ■  ■■■■  ■  ■  ■  ■■■    ■■■  ■■■■");
     go(row, col + 1);   printf("■■    ■  ■        ■  ■  ■  ■    ■    ■    ■");
     go(row, col + 2);   printf("■  ■  ■  ■■■■  ■  ■  ■  ■■■      ■    ■■■■");
     go(row, col + 3);   printf("■    ■■  ■         ■■■■   ■    ■    ■    ■");
     go(row, col + 4);   printf("■      ■  ■■■■    ■  ■    ■■■    ■■■  ■■■■");
+    SetConsoleTextAttribute(GetStdHandle(STD_OUTPUT_HANDLE), 14 | 3 << 4);
 }
 
 void EASY(int row, int col) {
@@ -245,11 +244,13 @@ void HARD(int row, int col) {
 
 void KOREAN(int row, int col) {
     row -= 8;
+    SetConsoleTextAttribute(GetStdHandle(STD_OUTPUT_HANDLE), 4 | 3 << 4);
     go(row, col);       printf("■    ■    ■■    ■■■    ■■■■    ■■    ■      ■");
     go(row, col + 1);   printf("■  ■    ■    ■  ■    ■  ■        ■    ■  ■■    ■");
     go(row, col + 2);   printf("■■      ■    ■  ■■■    ■■■■  ■■■■  ■  ■  ■");
     go(row, col + 3);   printf("■  ■    ■    ■  ■    ■  ■        ■    ■  ■    ■■");
-    go(row, col + 4);   printf("■    ■    ■■    ■    ■  ■■■■  ■    ■  ■      ■");
+    go(row, col + 4);   printf("■    ■    ■■    ■    ■  ■■■■  ■    ■  ■      ■");    
+    SetConsoleTextAttribute(GetStdHandle(STD_OUTPUT_HANDLE), 14 | 3 << 4);
 }
 
 void Play(int option) {
@@ -259,19 +260,19 @@ void Play(int option) {
     int row = 0, col = 0;
     switch (option) {
     case 0:
-        row = 18, col = 13;
+        row = 15, col = 10;
         break;
     case 1:
-        row = 28, col = 18;
+        row = 25, col = 15;
         break;
     case 2:
-        row = 38, col = 23;
+        row = 35, col = 20;
         break;
     case 3:
-        row = 48, col = 28;
+        row = 45, col = 25;
         break;
     case 4:
-        row = 58, col = 33;
+        row = 55, col = 30;
         break;
     }
     MazeGenerator(row, col);
@@ -293,8 +294,8 @@ void MazeGenerator(int row, int col) {
 
     int lastgroupwidth = 1;						        // 인접한 그룹을 랜덤하게 연결할 때 사용하는 변수
 
-    for (int i = 0; i < col; i++) {			            // 모든 행을 순회
-        for (int j = 0; j < row; j++) {			        // 해당 행 내의 모든 열 요소를 순회
+    for (int i = 0; i < col; i++)			            // 모든 행을 순회
+        for (int j = 0; j < row; j++)			        // 해당 행 내의 모든 열 요소를 순회
             if (i != col - 1 && j != row - 1)	        // 가장 아래 행과 가장 오른쪽 열이 아닌 경우
                 if (rand() % 2) {					    // 1/2 확률로 그룹을 확장
                     *(field + (row * 2 + 1) * (i * 2 + 1) + (j + 1) * 2) = 0;	// 해당 칸의 오른쪽 벽 제거
@@ -315,18 +316,15 @@ void MazeGenerator(int row, int col) {
                 }
             else if (j != row - 1)					    // 마지막 열에서 마지막 행 요소를 제외한 모든 열 요소에 대해
                 *(field + (row * 2 + 1) * (i * 2 + 1) + (j + 1) * 2) = 0;	// 해당 요소의 오른쪽 벽 제거 (마지막 행의 미로 내 모든 벽 제거)
-        }
-    }
-
+    int printrow = 120, printcol = 34 - col;
+    go(printrow - row * 2 - 1, printcol++);
     for (int i = 0; i < col * 2 + 1; i++) {			    // 전체 미로 배열의 각 행에 대해
-        for (int j = 0; j < row * 2 + 1; j++) {			// 해당 행의 각 열 요소를 순회하며
+        for (int j = 0; j < row * 2 + 1; j++)			// 해당 행의 각 열 요소를 순회하며
             if (*(field + (row * 2 + 1) * i + j) == 1)  // 1인 경우
                 printf("■");                            // 네모 출력
             else                                        // 0인 경우
                 printf("  ");	                        // 빈칸 출력
-        }
-        puts("");										// 한 행의 출력이 끝나면 개행
+        go(printrow - row * 2 - 1, printcol++);
     }
-
     free(field);
 }
