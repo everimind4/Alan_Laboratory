@@ -335,10 +335,11 @@ void ShowStartNEnd(int row, int col) {
 
 void MazeRunner(int row, int col) {
     SetConsoleTextAttribute(GetStdHandle(STD_OUTPUT_HANDLE), 4 | 3 << 4);
-    int maze_x = 120 - row * 2 - 1, maze_y = 35 - col;
-    int x = 0, y = 0, direction = 0;
+    int maze_x = 120 - row * 2 - 1, maze_y = 34 - col;
+    int goal_x = 120 + row * 2 - 1, goal_y = 35 - col;
+    int x = 0, y = 1, direction = 0;
     int pause = 0;
-    go(maze_x, maze_y); printf("▶");
+    go(maze_x + x * 2, maze_y + y); printf("▶");
     char key;
     while (1) {
         if (_kbhit()) {
@@ -355,23 +356,29 @@ void MazeRunner(int row, int col) {
                             printf("  ");
                         go(printrow - row * 2 + 1, printcol++);
                     }
+                    printrow = 96, printcol = 33 - col / 2;
+                    go(printrow, printcol++); printf("■■■■    ■■    ■    ■  ■■■■  ■■■■");
+                    go(printrow, printcol++); printf("■    ■  ■    ■  ■    ■  ■        ■");
+                    go(printrow, printcol++); printf("■■■    ■■■■  ■    ■  ■■■■  ■■■■");
+                    go(printrow, printcol++); printf("■        ■    ■  ■    ■        ■  ■");
+                    go(printrow, printcol);   printf("■        ■    ■    ■■    ■■■■  ■■■■");
                     pause++;
                 }   
                 else {
                     go(maze_x + x, maze_y + y);
                     SetConsoleTextAttribute(GetStdHandle(STD_OUTPUT_HANDLE), 4 | 3 << 4);
                     switch (direction) {
-                    case 0:
-                        printf("▶");
-                        break;
-                    case 1:
+                    case UP:
                         printf("▲");
                         break;
-                    case 2:
+                    case DOWN:
+                        printf("▼");
+                        break;
+                    case LEFT:
                         printf("◀");
                         break;
-                    case 3:
-                        printf("▼");
+                    case RIGHT:
+                        printf("▶");
                         break;
                     }
                     SetConsoleTextAttribute(GetStdHandle(STD_OUTPUT_HANDLE), 14 | 3 << 4);
@@ -389,21 +396,46 @@ void MazeRunner(int row, int col) {
                 SetConsoleTextAttribute(GetStdHandle(STD_OUTPUT_HANDLE), 4 | 3 << 4);
                 continue;
             }
-            else if (key == -32) {
+            else if (key == -32 && pause != 1) {
+                go(maze_x + x * 2, maze_y + y);
+                printf("  ");
                 key = _getch();
                 switch (key) {
                 case UP:
-                    // 위로 이동 (벽이면 제자리)       캐릭터 자리에 ▲ 출력
+                    direction = UP;
+                    y--; // if (*(maze + x * 2--y;
                     break;
                 case DOWN:
-                    // 아래로 이동 (벽이면 제자리)     캐릭터 자리에 ▼ 출력
+                    direction = DOWN;
+                    ++y;
                     break;
                 case LEFT:
-                    // 아래로 이동 (벽이면 제자리)     캐릭터 자리에 ◀ 출력
+                    direction = LEFT;
+                    --x;
                     break;
                 case RIGHT:
-                    // 아래로 이동 (벽이면 제자리)     캐릭터 자리에 ▶ 출력
+                    direction = RIGHT;
+                    ++x;
                     break;
+                }
+                go(maze_x + x * 2, maze_y + y);
+                switch (direction) {
+                case UP:
+                    printf("▲");
+                    break;
+                case DOWN:
+                    printf("▼");
+                    break;
+                case LEFT:
+                    printf("◀");
+                    break;
+                case RIGHT:
+                    printf("▶");
+                    break;
+                }
+                if (maze_x + x * 2 == goal_x && maze_y + y == goal_y) {
+                    SetConsoleTextAttribute(GetStdHandle(STD_OUTPUT_HANDLE), 14 | 3 << 4);
+                    return;
                 }
             }
         }
