@@ -264,7 +264,7 @@ void Play(int option) {
     switch (option)
     default: row = baserow + option * 10, col = basecol + option * 5;
     MazeGenerator(row, col);
-    // ShowStartNEnd(row, col);
+    ShowStartNEnd(row, col);
     MazeRunner(row, col);
 }
 
@@ -306,6 +306,15 @@ void MazeGenerator(int row, int col) {
                 }
             else if (j != row - 1)					    // 마지막 열에서 마지막 행 요소를 제외한 모든 열 요소에 대해
                 *(maze + (row * 2 + 1) * (i * 2 + 1) + (j + 1) * 2) = 0;	// 해당 요소의 오른쪽 벽 제거 (마지막 행의 미로 내 모든 벽 제거)
+    
+    int temp;
+    for (int i = 0; i < col; i++)
+        for (int j = row; j < row * 2 + 1; j++) {
+            temp = *(maze + (row * 2 + 1) * i + j);
+            *(maze + (row * 2 + 1) * i + j) = *(maze + (row * 2 + 1) * (col * 2 - i) + j);
+            *(maze + (row * 2 + 1) * (col * 2 - i) + j) = temp;
+        }
+
     int printrow = 120, printcol = 34 - col;
     go(printrow - row * 2 - 1, printcol++);
     for (int i = 0; i < col * 2 + 1; i++) {			    // 전체 미로 배열의 각 행에 대해
@@ -336,9 +345,8 @@ void ShowStartNEnd(int row, int col) {
 void MazeRunner(int row, int col) {
     SetConsoleTextAttribute(GetStdHandle(STD_OUTPUT_HANDLE), 4 | 3 << 4);
     int maze_x = 120 - row * 2 - 1, maze_y = 34 - col;
-    int goal_x = 120 + row * 2 - 1, goal_y = 35 - col;
-    int x = 0, y = 1, direction = 0;
-    int pause = 0;
+    int goal_x = 120 + row * 2 - 1, goal_y = 34;
+    int x = 0, y = 1, direction = RIGHT;
     go(maze_x + x * 2, maze_y + y); printf("▶");
     char key;
     while (1) {
@@ -356,12 +364,11 @@ void MazeRunner(int row, int col) {
                     go(printrow - row * 2 + 1, printcol++);
                 }
                 printrow = 96, printcol = 33 - col / 2;
-                go(printrow, printcol++); printf("■■■■    ■■    ■    ■  ■■■■  ■■■■");
+                go(printrow, printcol++); printf("■■■      ■■    ■    ■  ■■■■  ■■■■");
                 go(printrow, printcol++); printf("■    ■  ■    ■  ■    ■  ■        ■");
                 go(printrow, printcol++); printf("■■■    ■■■■  ■    ■  ■■■■  ■■■■");
                 go(printrow, printcol++); printf("■        ■    ■  ■    ■        ■  ■");
                 go(printrow, printcol);   printf("■        ■    ■    ■■    ■■■■  ■■■■");
-                pause++;
                 while (1) {
                     key = _getch();
                     if (key == ESC) {
@@ -398,26 +405,30 @@ void MazeRunner(int row, int col) {
                 SetConsoleTextAttribute(GetStdHandle(STD_OUTPUT_HANDLE), 4 | 3 << 4);
                 continue;
             }
-            else if (key == -32 && pause != 1) {
+            else if (key == -32) {
                 go(maze_x + x * 2, maze_y + y);
                 printf("  ");
                 key = _getch();
                 switch (key) {
                 case UP:
                     direction = UP;
-                    y--; // if (*(maze + x * 2--y;
+                    y--;
+                    if (*(maze + x + y * (row * 2 + 1)) == 1) y++;
                     break;
                 case DOWN:
                     direction = DOWN;
-                    ++y;
+                    y++;
+                    if (*(maze + x + y * (row * 2 + 1)) == 1) y--;
                     break;
                 case LEFT:
                     direction = LEFT;
-                    --x;
+                    x--;
+                    if (*(maze + x + y * (row * 2 + 1)) == 1) x++;
                     break;
                 case RIGHT:
                     direction = RIGHT;
-                    ++x;
+                    x++;
+                    if (*(maze + x + y * (row * 2 + 1)) == 1) x--;
                     break;
                 }
                 go(maze_x + x * 2, maze_y + y);
