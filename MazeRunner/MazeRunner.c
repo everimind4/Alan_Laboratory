@@ -10,5 +10,5 @@ int main()
     DrawTitle();
     DrawMenu();
     PrintCopyright();
-    SelectMenu();
+    Play(SelectMenu());
 }
