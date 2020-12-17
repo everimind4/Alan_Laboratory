@@ -1,2 +1,4 @@
 C:\Users\직업능력개발훈련 401호_2번\Documents\GitHub\Alan_Laboratory\MazeRunner\Debug\MazeRunner.exe
 C:\Users\직업능력개발훈련 401호_2번\Documents\GitHub\Alan_Laboratory\MazeRunner\Debug\MazeRunner.pdb
+E:\Alan Choi\Documents\Visual Studio 2019\GitHub\Alan_Laboratory\MazeRunner\Debug\MazeRunner.exe
+E:\Alan Choi\Documents\Visual Studio 2019\GitHub\Alan_Laboratory\MazeRunner\Debug\MazeRunner.pdb
