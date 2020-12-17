@@ -1,5 +1,4 @@
 ﻿#include "MazeRunner.h"
-#include <Windows.h>
 
 int main()
 {

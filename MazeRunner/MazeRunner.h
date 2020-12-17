@@ -1,3 +1,20 @@
+#include <stdio.h>
+#include <stdlib.h>
+#include <Windows.h>
+#include <conio.h>
+#include <time.h>
+
+#define UP 72
+#define DOWN 80
+#define LEFT 75
+#define RIGHT 77
+#define ENTER 13
+#define ESC 27
+
+#define MENUINITROW 90
+#define MENUINITCOL 35
+#define MENUCOLDIST 8
+
 void Fullscreen();
 void SetConsoleColor();
 void ClearConsole();
