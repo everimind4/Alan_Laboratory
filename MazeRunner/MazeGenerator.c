@@ -39,15 +39,4 @@ void MazeGenerator(int row, int col) {
 
     *(field + row * 2 + 1) = 0;							    // 입구 배치
     *(field + (row * 2 + 1) * (col * 2 - 1) + row * 2) = 0;	// 출구 배치
-
-    int printrow = 120, printcol = 34 - col;
-    go(printrow - row * 2 - 1, printcol++);
-    for (int i = 0; i < col * 2 + 1; i++) {			    // 전체 미로 배열의 각 행에 대해
-        for (int j = 0; j < row * 2 + 1; j++)			// 해당 행의 각 열 요소를 순회하며
-            if (*(field + (row * 2 + 1) * i + j) == 1)   // 1인 경우
-                printf("■");                            // 네모 출력
-            else                                        // 0인 경우
-                printf("  ");	                        // 빈칸 출력
-        go(printrow - row * 2 - 1, printcol++);
-    }
 }

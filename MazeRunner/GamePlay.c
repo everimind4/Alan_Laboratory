@@ -9,11 +9,12 @@ int Play(int option) {
     int baserow = 15, basecol = 10;
     int row = baserow + option * 10, col = basecol + option * 5;
     MazeGenerator(row, col);
-    // ShowStartNEnd(row, col);
+    ShowStartNEnd(row, col);
     return MazeRunner(row, col);
 }
 
 void ShowStartNEnd(int row, int col) {
+    ShowMaze(row, col, -1);
     int printrow = 120, printcol = 34 - col;
     for (int i = 0; i < 3; i++) {
         go(printrow - row * 2 - 1 - 8, printcol + 1); printf("Start бц");
@@ -26,6 +27,7 @@ void ShowStartNEnd(int row, int col) {
         go(printrow + row * 2 + 1, printcol + col * 2 - 1); printf("      ");
         Sleep(500);
     }
+
     int key;
     while (1)
         if (_kbhit()) {
@@ -33,6 +35,7 @@ void ShowStartNEnd(int row, int col) {
             if (key == ENTER)
                 break;
         }
+    ShowMaze(row, col, 1);
 }
 
 int MazeRunner(int row, int col) {
@@ -50,9 +53,8 @@ int MazeRunner(int row, int col) {
             if (key == ESC) {
                 SetConsoleTextAttribute(GetStdHandle(STD_OUTPUT_HANDLE), 14 | 3 << 4);
                 int printrow = 120, printcol = 35 - col;
-                ShowMaze(printrow, printcol, row, col, 0);
-                go(maze_x + x * 2, maze_y + y);
-                printf("  ");
+                go(maze_x + x * 2, maze_y + y); printf("  ");
+                ShowMaze(row, col, 0);                
                 printrow = CENTERROW - 20, printcol = CENTERCOL - 2;
                 SetConsoleTextAttribute(GetStdHandle(STD_OUTPUT_HANDLE), 15 | 3 << 4);
                 DrawString(printrow, printcol, "PAUSE");
@@ -68,7 +70,7 @@ int MazeRunner(int row, int col) {
                     }                        
                     else if (key == ESC) {
                         printrow = 120, printcol = 35 - col;
-                        ShowMaze(printrow, printcol, row, col, 1);
+                        ShowMaze(row, col, 1);
                         Arrow(maze_x + x * 2, maze_y + y, direction);
                         break;
                     }
@@ -113,18 +115,37 @@ int MazeRunner(int row, int col) {
     }
 }
 
-void ShowMaze(int printrow, int printcol, int row, int col, int option) {
+void ShowMaze(int row, int col, int option) {
     SetConsoleTextAttribute(GetStdHandle(STD_OUTPUT_HANDLE), 14 | 3 << 4);
-    go(printrow - row * 2 + 1, printcol++);
-    for (int i = 1; i < col * 2; i++) {
-        for (int j = 1; j < row * 2; j++)
-            if (option == 0)
-                printf("  ");
-            else if (*(field + (row * 2 + 1) * i + j) == 1)
-                printf("бс");
-            else
-                printf("  ");
+    int printrow = 120, printcol = 35 - col;
+    if (option != -1) {
         go(printrow - row * 2 + 1, printcol++);
+        for (int i = 1; i < col * 2; i++) {
+            for (int j = 1; j < row * 2; j++)
+                if (option == 0)
+                    printf("  ");
+                else if (*(field + (row * 2 + 1) * i + j) == 1)
+                    printf("бс");
+                else
+                    printf("  ");
+            go(printrow - row * 2 + 1, printcol++);
+        }
+    }
+    else {
+        go(printrow - row * 2 - 1, printcol - 1);
+        for (int i = 0; i < col * 2 + 1; i++) {
+            if (i == 0 || i == col * 2)
+                for (int j = 0; j < row * 2 + 1; j++)
+                    printf("бс");
+            else {
+                if (i != 1)
+                    printf("бс");
+                go(printrow + row * 2 - 1, printcol - 1);
+                if (i != col * 2 - 1)
+                    printf("бс");
+            }
+            go(printrow - row * 2 - 1, printcol++);
+        }
     }
 }
 

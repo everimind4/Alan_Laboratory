@@ -46,7 +46,7 @@ int DrawChar(int, int, char);
 int Play(int);
 void ShowStartNEnd(int, int);
 int MazeRunner(int, int);
-void ShowMaze(int, int, int, int, int);
+void ShowMaze(int, int, int);
 void Arrow(int, int, int);
 
 // MazeGenerator.c
