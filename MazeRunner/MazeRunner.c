@@ -2,12 +2,12 @@
 
 int main()
 {
-    Fullscreen();
+    /*Fullscreen();
     ClearConsole();
     SetConsoleColor();
     CursorView(0);
     DrawTitle();
     DrawMenu();
     PrintCopyright();
-    Play(SelectMenu());
+    Play(SelectMenu());*/
 }

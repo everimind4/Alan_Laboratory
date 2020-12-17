@@ -36,6 +36,10 @@ void NORMAL(int, int);
 void HARD(int, int);
 void KOREAN(int, int);
 
+// DrawText.c
+void DrawString(int, int, const char*);
+int DrawChar(int, int, char);
+
 // GamePlay.c
 void Play(int);
 void ShowStartNEnd(int, int);

@@ -167,48 +167,28 @@ void ClearLevelInfo(int row, int col) {
 void NEWBIE(int row, int col) {
     row -= 8;
     SetConsoleTextAttribute(GetStdHandle(STD_OUTPUT_HANDLE), 10 | 3 << 4);
-    go(row, col);       printf("бс      бс  бсбсбсбс  бс  бс  бс  бсбсбс    бсбсбс  бсбсбсбс");
-    go(row, col + 1);   printf("бсбс    бс  бс        бс  бс  бс  бс    бс    бс    бс");
-    go(row, col + 2);   printf("бс  бс  бс  бсбсбсбс  бс  бс  бс  бсбсбс      бс    бсбсбсбс");
-    go(row, col + 3);   printf("бс    бсбс  бс         бсбсбсбс   бс    бс    бс    бс");
-    go(row, col + 4);   printf("бс      бс  бсбсбсбс    бс  бс    бсбсбс    бсбсбс  бсбсбсбс");
+    DrawString(1, 1, "NEWBIE");
     SetConsoleTextAttribute(GetStdHandle(STD_OUTPUT_HANDLE), 14 | 3 << 4);
 }
 
 void EASY(int row, int col) {
     row += 3;
-    go(row, col);       printf("бсбсбсбс    бсбс    бсбсбсбс  бс    бс");
-    go(row, col + 1);   printf("бс        бс    бс  бс         бс  бс");
-    go(row, col + 2);   printf("бсбсбсбс  бсбсбсбс  бсбсбсбс    бсбс");
-    go(row, col + 3);   printf("бс        бс    бс        бс     бс");
-    go(row, col + 4);   printf("бсбсбсбс  бс    бс  бсбсбсбс     бс");
+    DrawString(1, 1, "EASY");
 }
 
 void NORMAL(int row, int col) {
     row -= 8;
-    go(row, col);       printf("бс      бс    бсбс    бсбсбс    бс      бс    бсбс    бс");
-    go(row, col + 1);   printf("бсбс    бс  бс    бс  бс    бс  бсбс  бсбс  бс    бс  бс");
-    go(row, col + 2);   printf("бс  бс  бс  бс    бс  бсбсбс    бс  бс  бс  бсбсбсбс  бс");
-    go(row, col + 3);   printf("бс    бсбс  бс    бс  бс    бс  бс      бс  бс    бс  бс");
-    go(row, col + 4);   printf("бс      бс    бсбс    бс    бс  бс      бс  бс    бс  бсбсбс");
+    DrawString(1, 1, "NORMAL");
 }
 
 void HARD(int row, int col) {
     row += 3;
-    go(row, col);       printf("бс    бс    бсбс    бсбсбс    бсбсбс");
-    go(row, col + 1);   printf("бс    бс  бс    бс  бс    бс  бс    бс");
-    go(row, col + 2);   printf("бсбсбсбс  бсбсбсбс  бсбсбс    бс    бс");
-    go(row, col + 3);   printf("бс    бс  бс    бс  бс    бс  бс    бс");
-    go(row, col + 4);   printf("бс    бс  бс    бс  бс    бс  бсбсбс");
+    DrawString(row, col, "HARD");
 }
 
 void KOREAN(int row, int col) {
     row -= 8;
     SetConsoleTextAttribute(GetStdHandle(STD_OUTPUT_HANDLE), 4 | 3 << 4);
-    go(row, col);       printf("бс    бс    бсбс    бсбсбс    бсбсбсбс    бсбс    бс      бс");
-    go(row, col + 1);   printf("бс  бс    бс    бс  бс    бс  бс        бс    бс  бсбс    бс");
-    go(row, col + 2);   printf("бсбс      бс    бс  бсбсбс    бсбсбсбс  бсбсбсбс  бс  бс  бс");
-    go(row, col + 3);   printf("бс  бс    бс    бс  бс    бс  бс        бс    бс  бс    бсбс");
-    go(row, col + 4);   printf("бс    бс    бсбс    бс    бс  бсбсбсбс  бс    бс  бс      бс");
+    DrawString(row, col, "KOREAN");
     SetConsoleTextAttribute(GetStdHandle(STD_OUTPUT_HANDLE), 14 | 3 << 4);
 }
