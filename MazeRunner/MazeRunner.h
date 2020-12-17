@@ -15,11 +15,14 @@
 #define MENUINITCOL 35
 #define MENUCOLDIST 8
 
+// ConsoleSetting.c
 void Fullscreen();
 void SetConsoleColor();
 void ClearConsole();
 void go(int, int);
 void CursorView(int);
+
+// ConsoleUI.c
 void DrawTitle();
 void DrawMenu();
 void PrintCopyright();
@@ -32,7 +35,13 @@ void EASY(int, int);
 void NORMAL(int, int);
 void HARD(int, int);
 void KOREAN(int, int);
+
+// GamePlay.c
 void Play(int);
-void MazeGenerator(int, int);
 void ShowStartNEnd(int, int);
 void MazeRunner(int, int);
+void ShowMaze(int, int, int, int, int);
+void Arrow(int, int, int);
+
+// MazeGenerator.c
+void MazeGenerator(int, int);
