@@ -2,7 +2,7 @@
 
 extern int* maze;
 
-void Play(int option) {
+int Play(int option) {
     if (option == -1)
         return;
     system("cls");
@@ -10,8 +10,8 @@ void Play(int option) {
     switch (option)
     default: row = baserow + option * 10, col = basecol + option * 5;
     MazeGenerator(row, col);
-    ShowStartNEnd(row, col);
-    MazeRunner(row, col);
+    // ShowStartNEnd(row, col);
+    return MazeRunner(row, col);
 }
 
 void ShowStartNEnd(int row, int col) {
@@ -36,7 +36,7 @@ void ShowStartNEnd(int row, int col) {
         }
 }
 
-void MazeRunner(int row, int col) {
+int MazeRunner(int row, int col) {
     SetConsoleTextAttribute(GetStdHandle(STD_OUTPUT_HANDLE), 4 | 3 << 4);
     int maze_x = 120 - row * 2 - 1, maze_y = 34 - col;
     int goal_x = 120 + row * 2 - 1, goal_y = 34 + col - 1;
@@ -54,11 +54,17 @@ void MazeRunner(int row, int col) {
                 ShowMaze(printrow, printcol, row, col, 0);
                 go(maze_x + x * 2, maze_y + y);
                 printf("  ");
-                printrow = 96, printcol = 33 - col / 2;
+                printrow = CENTERROW - 20, printcol = CENTERCOL;
+                SetConsoleTextAttribute(GetStdHandle(STD_OUTPUT_HANDLE), 15 | 3 << 4);
                 DrawString(printrow, printcol, "PAUSE");
+                go(CENTERROW - 8, CENTERCOL + 2); printf("");
+                SetConsoleTextAttribute(GetStdHandle(STD_OUTPUT_HANDLE), 14 | 3 << 4);
+                int select = 0;
                 while (1) {
                     key = _getch();
-                    if (key == ESC) {
+                    if (key == ENTER)
+                        return 1;
+                    else if (key == ESC) {
                         printrow = 120, printcol = 35 - col;
                         ShowMaze(printrow, printcol, row, col, 1);
                         Arrow(maze_x + x * 2, maze_y + y, direction);
@@ -97,7 +103,7 @@ void MazeRunner(int row, int col) {
                 Arrow(maze_x + x * 2, maze_y + y, direction);
                 if (maze_x + x * 2 == goal_x && maze_y + y == goal_y) {
                     SetConsoleTextAttribute(GetStdHandle(STD_OUTPUT_HANDLE), 14 | 3 << 4);
-                    return;
+                    return 0;
                 }
             }
         }

@@ -2,12 +2,13 @@
 
 int main()
 {
-    Fullscreen();
-    ClearConsole();
-    SetConsoleColor();
-    CursorView(0);
-    DrawTitle();
-    DrawMenu();
-    PrintCopyright();
-    Play(SelectMenu());
+    do {
+        Fullscreen();
+        ClearConsole();
+        SetConsoleColor();
+        CursorView(0);
+        DrawTitle();
+        DrawMenu();
+        PrintCopyright();
+    } while (Play(SelectMenu()));
 }

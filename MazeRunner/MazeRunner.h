@@ -11,6 +11,8 @@
 #define ENTER 13
 #define ESC 27
 
+#define CENTERROW 116
+#define CENTERCOL 32
 #define MENUINITROW 90
 #define MENUINITCOL 35
 #define MENUCOLDIST 8
@@ -41,9 +43,9 @@ void DrawString(int, int, const char*);
 int DrawChar(int, int, char);
 
 // GamePlay.c
-void Play(int);
+int Play(int);
 void ShowStartNEnd(int, int);
-void MazeRunner(int, int);
+int MazeRunner(int, int);
 void ShowMaze(int, int, int, int, int);
 void Arrow(int, int, int);
 
