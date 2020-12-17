@@ -49,6 +49,7 @@ void MazeGenerator(int row, int col) {
 
     *(maze + row * 2 + 1) = 0;							    // 입구 배치
     *(maze + (row * 2 + 1) * (col * 2 - 1) + row * 2) = 0;	// 출구 배치
+    *(maze + (row * 2 + 1) * (col * 2 - 1) + row + 1) = 0;
 
     int printrow = 120, printcol = 34 - col;
     go(printrow - row * 2 - 1, printcol++);
