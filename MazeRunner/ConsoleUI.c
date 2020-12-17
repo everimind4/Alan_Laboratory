@@ -167,18 +167,18 @@ void ClearLevelInfo(int row, int col) {
 void NEWBIE(int row, int col) {
     row -= 8;
     SetConsoleTextAttribute(GetStdHandle(STD_OUTPUT_HANDLE), 10 | 3 << 4);
-    DrawString(1, 1, "NEWBIE");
+    DrawString(row, col, "NEWBIE");
     SetConsoleTextAttribute(GetStdHandle(STD_OUTPUT_HANDLE), 14 | 3 << 4);
 }
 
 void EASY(int row, int col) {
     row += 3;
-    DrawString(1, 1, "EASY");
+    DrawString(row, col, "EASY");
 }
 
 void NORMAL(int row, int col) {
     row -= 8;
-    DrawString(1, 1, "NORMAL");
+    DrawString(row, col, "NORMAL");
 }
 
 void HARD(int row, int col) {

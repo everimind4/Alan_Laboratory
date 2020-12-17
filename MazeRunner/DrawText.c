@@ -103,8 +103,8 @@ int DrawChar(int row, int col, char ch) {
 		go(row, col + 1);   printf("бс");
 		go(row, col + 2);   printf("бс");
 		go(row, col + 3);   printf("бс");
-		go(row, col + 4);   printf("бсбсбсбс");
-		return 4;
+		go(row, col + 4);   printf("бсбсбс");
+		return 3;
 	case 'M':
 		go(row, col);       printf("бс      бс");
 		go(row, col + 1);   printf("бсбс  бсбс");

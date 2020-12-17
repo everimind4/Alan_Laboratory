@@ -42,7 +42,7 @@ void MazeRunner(int row, int col) {
     int goal_x = 120 + row * 2 - 1, goal_y = 34 + col - 1;
     int x = 0, y = 1, direction = RIGHT;
 
-    go(maze_x + x * 2, maze_y + y); printf("в║");
+    Arrow(maze_x + x * 2, maze_y + y, direction);
     char key;
 
     while (1) {
@@ -55,11 +55,7 @@ void MazeRunner(int row, int col) {
                 go(maze_x + x * 2, maze_y + y);
                 printf("  ");
                 printrow = 96, printcol = 33 - col / 2;
-                go(printrow, printcol++); printf("бсбсбс      бсбс    бс    бс  бсбсбсбс  бсбсбсбс");
-                go(printrow, printcol++); printf("бс    бс  бс    бс  бс    бс  бс        бс");
-                go(printrow, printcol++); printf("бсбсбс    бсбсбсбс  бс    бс  бсбсбсбс  бсбсбсбс");
-                go(printrow, printcol++); printf("бс        бс    бс  бс    бс        бс  бс");
-                go(printrow, printcol);   printf("бс        бс    бс    бсбс    бсбсбсбс  бсбсбсбс");
+                DrawString(printrow, printcol, "PAUSE");
                 while (1) {
                     key = _getch();
                     if (key == ESC) {
