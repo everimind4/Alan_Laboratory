@@ -28,6 +28,8 @@ void ShowStartNEnd(int row, int col) {
         Sleep(500);
     }
 
+    DrawString(CENTERROW - 20, CENTERCOL - 3, "PRESS\nENTER");
+
     int key;
     while (1)
         if (_kbhit()) {
@@ -35,6 +37,9 @@ void ShowStartNEnd(int row, int col) {
             if (key == ENTER)
                 break;
         }
+
+    ShowMaze(row, col, 0);
+    Sleep(100);    
     ShowMaze(row, col, 1);
 }
 
@@ -52,12 +57,10 @@ int MazeRunner(int row, int col) {
             key = _getch();
             if (key == ESC) {
                 SetConsoleTextAttribute(GetStdHandle(STD_OUTPUT_HANDLE), 14 | 3 << 4);
-                int printrow = 120, printcol = 35 - col;
                 go(maze_x + x * 2, maze_y + y); printf("  ");
-                ShowMaze(row, col, 0);                
-                printrow = CENTERROW - 20, printcol = CENTERCOL - 2;
+                ShowMaze(row, col, 0);   
                 SetConsoleTextAttribute(GetStdHandle(STD_OUTPUT_HANDLE), 15 | 3 << 4);
-                DrawString(printrow, printcol, "PAUSE");
+                DrawString(CENTERROW - 20, CENTERCOL - 2, "PAUSE");
                 go(CENTERROW - 3, CENTERCOL + 6); printf("ESC :: RESUME"); 
                 go(CENTERROW - 3, CENTERCOL + 8); printf("ENTER :: EXIT");
                 SetConsoleTextAttribute(GetStdHandle(STD_OUTPUT_HANDLE), 14 | 3 << 4);
@@ -69,7 +72,6 @@ int MazeRunner(int row, int col) {
                         return 1;
                     }                        
                     else if (key == ESC) {
-                        printrow = 120, printcol = 35 - col;
                         ShowMaze(row, col, 1);
                         Arrow(maze_x + x * 2, maze_y + y, direction);
                         break;
