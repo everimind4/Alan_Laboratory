@@ -18,7 +18,19 @@
     <ClCompile Include="MazeRunner.c">
       <Filter>소스 파일</Filter>
     </ClCompile>
-    <ClCompile Include="Functions.c">
+    <ClCompile Include="ConsoleSetting.c">
+      <Filter>소스 파일</Filter>
+    </ClCompile>
+    <ClCompile Include="ConsoleUI.c">
+      <Filter>소스 파일</Filter>
+    </ClCompile>
+    <ClCompile Include="MazeGenerator.c">
+      <Filter>소스 파일</Filter>
+    </ClCompile>
+    <ClCompile Include="GamePlay.c">
+      <Filter>소스 파일</Filter>
+    </ClCompile>
+    <ClCompile Include="DrawText.c">
       <Filter>소스 파일</Filter>
     </ClCompile>
   </ItemGroup>

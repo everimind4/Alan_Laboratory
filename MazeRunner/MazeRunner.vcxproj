@@ -139,8 +139,12 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="ConsoleSetting.c" />
+    <ClCompile Include="ConsoleUI.c" />
+    <ClCompile Include="DrawText.c" />
+    <ClCompile Include="MazeGenerator.c" />
     <ClCompile Include="MazeRunner.c" />
-    <ClCompile Include="Functions.c" />
+    <ClCompile Include="GamePlay.c" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="MazeRunner.h" />
