@@ -53,10 +53,11 @@ int MazeRunner(int row, int col) {
                 ShowMaze(printrow, printcol, row, col, 0);
                 go(maze_x + x * 2, maze_y + y);
                 printf("  ");
-                printrow = CENTERROW - 20, printcol = CENTERCOL;
+                printrow = CENTERROW - 20, printcol = CENTERCOL - 2;
                 SetConsoleTextAttribute(GetStdHandle(STD_OUTPUT_HANDLE), 15 | 3 << 4);
                 DrawString(printrow, printcol, "PAUSE");
-                go(CENTERROW - 8, CENTERCOL + 2); printf("");
+                go(CENTERROW - 3, CENTERCOL + 6); printf("ESC :: RESUME"); 
+                go(CENTERROW - 3, CENTERCOL + 8); printf("ENTER :: EXIT");
                 SetConsoleTextAttribute(GetStdHandle(STD_OUTPUT_HANDLE), 14 | 3 << 4);
                 int select = 0;
                 while (1) {
