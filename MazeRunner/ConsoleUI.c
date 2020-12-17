@@ -20,24 +20,15 @@ void DrawTitle() {
 }
 
 void DrawMenu() {
-    // Menu
     int row = MENUINITROW, col = MENUINITCOL;
     col += MENUCOLDIST;
-    go(row, col);       printf("бсбсбсбс  бсбсбс    бсбс    бсбсбс    бсбсбс");
-    go(row, col + 1);   printf("бс          бс    бс    бс  бс    бс    бс");
-    go(row, col + 2);   printf("бсбсбсбс    бс    бсбсбсбс  бсбсбс      бс");
-    go(row, col + 3);   printf("      бс    бс    бс    бс  бс    бс    бс");
-    go(row, col + 4);   printf("бсбсбсбс    бс    бс    бс  бс    бс    бс");
+    DrawString(row, col, "START");
     row += 6; col += MENUCOLDIST;
-    go(row, col);       printf("бсбсбсбс  бс  бс  бсбсбс  бсбсбс");
-    go(row, col + 1);   printf("бс         бсбс     бс      бс");
-    go(row, col + 2);   printf("бсбсбсбс    бс      бс      бс");
-    go(row, col + 3);   printf("бс         бсбс     бс      бс");
-    go(row, col + 4);   printf("бсбсбсбс  бс  бс  бсбсбс    бс");
+    DrawString(row, col, "EXIT");
 }
 
 void PrintCopyright() {
-    go(88, 64); printf("Copyright 2020. Youngin Choi All right reserved.");
+    go(88, 64); printf("Copyright 2020 Youngin Choi. All right reserved.");
 }
 
 int SelectMenu() {
