@@ -51,8 +51,7 @@ int SelectMenu() {
             key = _getch();
             if (key == ENTER) {
                 if (menu == 1)
-                    switch (level)
-                    default: return level;
+                    return level;
                 else if (menu == 2)
                     return -1;
             }
@@ -90,25 +89,25 @@ void ShowSelected(int menu) {
     const int levelarrowwidth = 10;
     for (int i = 0; i < 3; i++) {
         if (i != 0) {
-            go(row, MENUINITCOL + i * MENUCOLDIST);     printf("¡¡");
+            go(row,     MENUINITCOL + i * MENUCOLDIST);     printf("¡¡");
             go(row + 2, MENUINITCOL + i * MENUCOLDIST + 1); printf("¡¡");
             go(row + 4, MENUINITCOL + i * MENUCOLDIST + 2); printf("¡¡");
             go(row + 2, MENUINITCOL + i * MENUCOLDIST + 3); printf("¡¡");
-            go(row, MENUINITCOL + i * MENUCOLDIST + 4); printf("¡¡");
+            go(row,     MENUINITCOL + i * MENUCOLDIST + 4); printf("¡¡");
         }
         else
         {
-            go(row + 4 - levelarrowwidth, MENUINITCOL + i * MENUCOLDIST);     printf("¡¡");
-            go(row + 2 - levelarrowwidth, MENUINITCOL + i * MENUCOLDIST + 1); printf("¡¡");
-            go(row - levelarrowwidth, MENUINITCOL + i * MENUCOLDIST + 2); printf("¡¡");
-            go(row + 2 - levelarrowwidth, MENUINITCOL + i * MENUCOLDIST + 3); printf("¡¡");
-            go(row + 4 - levelarrowwidth, MENUINITCOL + i * MENUCOLDIST + 4); printf("¡¡");
+            go(row + 4 - levelarrowwidth, MENUINITCOL + i * MENUCOLDIST);       printf("¡¡");
+            go(row + 2 - levelarrowwidth, MENUINITCOL + i * MENUCOLDIST + 1);   printf("¡¡");
+            go(row     - levelarrowwidth, MENUINITCOL + i * MENUCOLDIST + 2);   printf("¡¡");
+            go(row + 2 - levelarrowwidth, MENUINITCOL + i * MENUCOLDIST + 3);   printf("¡¡");
+            go(row + 4 - levelarrowwidth, MENUINITCOL + i * MENUCOLDIST + 4);   printf("¡¡");
             row += levelarrowdist;
-            go(row + levelarrowwidth, MENUINITCOL + i * MENUCOLDIST);     printf("¡¡");
-            go(row + 2 + levelarrowwidth, MENUINITCOL + i * MENUCOLDIST + 1); printf("¡¡");
-            go(row + 4 + levelarrowwidth, MENUINITCOL + i * MENUCOLDIST + 2); printf("¡¡");
-            go(row + 2 + levelarrowwidth, MENUINITCOL + i * MENUCOLDIST + 3); printf("¡¡");
-            go(row + levelarrowwidth, MENUINITCOL + i * MENUCOLDIST + 4); printf("¡¡");
+            go(row     + levelarrowwidth, MENUINITCOL + i * MENUCOLDIST);       printf("¡¡");
+            go(row + 2 + levelarrowwidth, MENUINITCOL + i * MENUCOLDIST + 1);   printf("¡¡");
+            go(row + 4 + levelarrowwidth, MENUINITCOL + i * MENUCOLDIST + 2);   printf("¡¡");
+            go(row + 2 + levelarrowwidth, MENUINITCOL + i * MENUCOLDIST + 3);   printf("¡¡");
+            go(row     + levelarrowwidth, MENUINITCOL + i * MENUCOLDIST + 4);   printf("¡¡");
             row -= levelarrowdist;
         }
     }
@@ -122,15 +121,15 @@ void ShowSelected(int menu) {
     else {
         go(row + 4 - levelarrowwidth, col);       printf("¡á");
         go(row + 2 - levelarrowwidth, col + 1);   printf("¡á");
-        go(row - levelarrowwidth, col + 2);   printf("¡á");
+        go(row     - levelarrowwidth, col + 2);   printf("¡á");
         go(row + 2 - levelarrowwidth, col + 3);   printf("¡á");
         go(row + 4 - levelarrowwidth, col + 4);   printf("¡á");
         row += levelarrowdist;
-        go(row + levelarrowwidth, col);       printf("¡á");
+        go(row     + levelarrowwidth, col);       printf("¡á");
         go(row + 2 + levelarrowwidth, col + 1);   printf("¡á");
         go(row + 4 + levelarrowwidth, col + 2);   printf("¡á");
         go(row + 2 + levelarrowwidth, col + 3);   printf("¡á");
-        go(row + levelarrowwidth, col + 4);   printf("¡á");
+        go(row     + levelarrowwidth, col + 4);   printf("¡á");
     }
 }
 

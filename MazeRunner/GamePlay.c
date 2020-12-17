@@ -1,14 +1,13 @@
 #include "MazeRunner.h"
 
-extern int* maze;
+extern int* field;
 
 int Play(int option) {
     if (option == -1)
-        return;
+        return 0;
     system("cls");
-    int row = 0, col = 0, baserow = 15, basecol = 10;
-    switch (option)
-    default: row = baserow + option * 10, col = basecol + option * 5;
+    int baserow = 15, basecol = 10;
+    int row = baserow + option * 10, col = basecol + option * 5;
     MazeGenerator(row, col);
     // ShowStartNEnd(row, col);
     return MazeRunner(row, col);
@@ -62,8 +61,10 @@ int MazeRunner(int row, int col) {
                 int select = 0;
                 while (1) {
                     key = _getch();
-                    if (key == ENTER)
+                    if (key == ENTER) {
+                        free(field);
                         return 1;
+                    }                        
                     else if (key == ESC) {
                         printrow = 120, printcol = 35 - col;
                         ShowMaze(printrow, printcol, row, col, 1);
@@ -82,27 +83,28 @@ int MazeRunner(int row, int col) {
                 case UP:
                     direction = UP;
                     y--;
-                    if (*(maze + x + y * (row * 2 + 1)) == 1) y++;
+                    if (*(field + x + y * (row * 2 + 1)) == 1) y++;
                     break;
                 case DOWN:
                     direction = DOWN;
                     y++;
-                    if (*(maze + x + y * (row * 2 + 1)) == 1) y--;
+                    if (*(field + x + y * (row * 2 + 1)) == 1) y--;
                     break;
                 case LEFT:
                     direction = LEFT;
                     x--;
-                    if (*(maze + x + y * (row * 2 + 1)) == 1) x++;
+                    if (*(field + x + y * (row * 2 + 1)) == 1) x++;
                     break;
                 case RIGHT:
                     direction = RIGHT;
                     x++;
-                    if (*(maze + x + y * (row * 2 + 1)) == 1) x--;
+                    if (*(field + x + y * (row * 2 + 1)) == 1) x--;
                     break;
                 }
                 Arrow(maze_x + x * 2, maze_y + y, direction);
                 if (maze_x + x * 2 == goal_x && maze_y + y == goal_y) {
                     SetConsoleTextAttribute(GetStdHandle(STD_OUTPUT_HANDLE), 14 | 3 << 4);
+                    free(field);
                     return 0;
                 }
             }
@@ -117,7 +119,7 @@ void ShowMaze(int printrow, int printcol, int row, int col, int option) {
         for (int j = 1; j < row * 2; j++)
             if (option == 0)
                 printf("  ");
-            else if (*(maze + (row * 2 + 1) * i + j) == 1)
+            else if (*(field + (row * 2 + 1) * i + j) == 1)
                 printf("бс");
             else
                 printf("  ");
