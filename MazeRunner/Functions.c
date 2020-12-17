@@ -279,8 +279,6 @@ void MazeGenerator(int row, int col) {
                 *(maze + (row * 2 + 1) * i + j) = 1;	// 벽이 있다고 표시하기
             else								        // 미로 공간에 해당하는 칸에 대해
                 *(maze + (row * 2 + 1) * i + j) = 0;	// 벽이 없다고 표시하기
-    *(maze + row * 2 + 1) = 0;							// 입구 배치
-    *(maze + row * 2 + 1 + row * 2) = 0;				// 출구 배치
 
     int lastgroupwidth = 1;						        // 인접한 그룹을 랜덤하게 연결할 때 사용하는 변수
 
@@ -315,6 +313,9 @@ void MazeGenerator(int row, int col) {
             *(maze + (row * 2 + 1) * (col * 2 - i) + j) = temp;
         }
 
+    *(maze + row * 2 + 1) = 0;							    // 입구 배치
+    *(maze + (row * 2 + 1) * (col * 2 - 1) + row * 2) = 0;	// 출구 배치
+
     int printrow = 120, printcol = 34 - col;
     go(printrow - row * 2 - 1, printcol++);
     for (int i = 0; i < col * 2 + 1; i++) {			    // 전체 미로 배열의 각 행에 대해
@@ -331,13 +332,13 @@ void ShowStartNEnd(int row, int col) {
     int printrow = 120, printcol = 34 - col;
     for (int i = 0; i < 3; i++) {
         go(printrow - row * 2 - 1 - 8, printcol + 1); printf("Start →");
-        go(printrow + row * 2 + 1, printcol + 1); printf("← End");
+        go(printrow + row * 2 + 1, printcol + col * 2 - 1); printf("← End");
         if (i != 2)
             Sleep(500);
         else
             Sleep(3000);
         go(printrow - row * 2 - 1 - 8, printcol + 1); printf("        ");
-        go(printrow + row * 2 + 1, printcol + 1); printf("      ");
+        go(printrow + row * 2 + 1, printcol + col * 2 - 1); printf("      ");
         Sleep(500);
     }
 }
@@ -345,7 +346,7 @@ void ShowStartNEnd(int row, int col) {
 void MazeRunner(int row, int col) {
     SetConsoleTextAttribute(GetStdHandle(STD_OUTPUT_HANDLE), 4 | 3 << 4);
     int maze_x = 120 - row * 2 - 1, maze_y = 34 - col;
-    int goal_x = 120 + row * 2 - 1, goal_y = 34;
+    int goal_x = 120 + row * 2 - 1, goal_y = 34 + col - 1;
     int x = 0, y = 1, direction = RIGHT;
     go(maze_x + x * 2, maze_y + y); printf("▶");
     char key;
