@@ -23,9 +23,7 @@ void ShowStartNEnd(int row, int col) {
     DrawString(CENTERROW - 20, CENTERCOL - 3, "PRESS\nENTER");
 
     char key;
-    while (key = _getch())
-        if (key == ENTER)
-            break;
+    while ((key = _getch()) != ENTER)
 
     go(printrow - row * 2 - 1 - 8, printcol + 1); printf("        ");
     go(printrow + row * 2 + 1, printcol + col * 2 - 1); printf("      ");
