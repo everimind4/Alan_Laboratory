@@ -15,28 +15,20 @@ int Play(int option) {
 
 void ShowStartNEnd(int row, int col) {
     ShowMaze(row, col, -1);
+
     int printrow = 120, printcol = 34 - col;
-    for (int i = 0; i < 3; i++) {
-        go(printrow - row * 2 - 1 - 8, printcol + 1); printf("Start ¡æ");
-        go(printrow + row * 2 + 1, printcol + col * 2 - 1); printf("¡ç End");
-        if (i != 2)
-            Sleep(500);
-        else
-            Sleep(1500);
-        go(printrow - row * 2 - 1 - 8, printcol + 1); printf("        ");
-        go(printrow + row * 2 + 1, printcol + col * 2 - 1); printf("      ");
-        Sleep(500);
-    }
+    go(printrow - row * 2 - 1 - 8, printcol + 1); printf("Start ¡æ");
+    go(printrow + row * 2 + 1, printcol + col * 2 - 1); printf("¡ç End");
 
     DrawString(CENTERROW - 20, CENTERCOL - 3, "PRESS\nENTER");
 
-    int key;
-    while (1)
-        if (_kbhit()) {
-            key = _getch();
-            if (key == ENTER)
-                break;
-        }
+    char key;
+    while (key = _getch())
+        if (key == ENTER)
+            break;
+
+    go(printrow - row * 2 - 1 - 8, printcol + 1); printf("        ");
+    go(printrow + row * 2 + 1, printcol + col * 2 - 1); printf("      ");
 
     ShowMaze(row, col, 0);
     Sleep(100);    
