@@ -27,6 +27,10 @@ void DrawMenu() {
     DrawString(row, col, "EXIT");
 }
 
+void PrintVersion() {
+    go(162, 21); printf("v Beta");
+}
+
 void PrintCopyright() {
     go(88, 64); printf("Copyright 2020 Youngin Choi. All right reserved.");
 }

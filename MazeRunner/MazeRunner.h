@@ -27,6 +27,7 @@ void CursorView(int);
 // ConsoleUI.c
 void DrawTitle();
 void DrawMenu();
+void PrintVersion();
 void PrintCopyright();
 int SelectMenu();
 void ShowSelected(int);

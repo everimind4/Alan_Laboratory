@@ -9,6 +9,7 @@ int main()
         CursorView(0);
         DrawTitle();
         DrawMenu();
+        PrintVersion();
         PrintCopyright();
     } while (Play(SelectMenu()));
 }
