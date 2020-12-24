@@ -203,6 +203,12 @@ int DrawChar(int row, int col, char ch) {
 		go(row, col + 3);   printf(" бс");
 		go(row, col + 4);   printf("бсбсбсбс");
 		return 4;
+	case '!':
+		go(row, col);       printf("  бс");
+		go(row, col + 1);   printf("  бс");
+		go(row, col + 2);   printf("  бс");
+		go(row, col + 4);   printf("  бс");
+		return 2;
 	default: return 0;
 	}	
 }
