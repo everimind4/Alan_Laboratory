@@ -2,11 +2,11 @@
 
 int main()
 {
-    do {
-        Fullscreen();
+    Fullscreen();
+    SetConsoleColor();
+    CursorView(0);
+    do {        
         ClearConsole();
-        SetConsoleColor();
-        CursorView(0);
         DrawTitle();
         DrawMenu();
         PrintVersion();

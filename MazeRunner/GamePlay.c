@@ -199,7 +199,7 @@ void Score(clock_t time) {
             DrawChar(row, col + 11, 'S');
         }
         else {
-            row += 18;
+            row += 28;
             if (time / 1000 > 9)
                 DrawNumber(row, col, time / 10000 % 10);
             row += 28;
