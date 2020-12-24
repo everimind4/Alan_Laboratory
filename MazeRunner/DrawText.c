@@ -210,5 +210,191 @@ int DrawChar(int row, int col, char ch) {
 		go(row, col + 4);   printf("  ¡á");
 		return 2;
 	default: return 0;
-	}	
+	}
+}
+
+void DrawNumber(int row, int col, int number) {
+	switch (number) {
+	case 1:
+		go(row - 10, col);      printf("                ¡á¡á");
+		go(row - 11, col + 1);  printf("                ¡á¡á");
+		go(row - 12, col + 2);  printf("                ¡á¡á");
+		go(row - 13, col + 3);  printf("                ¡á¡á");
+		go(row - 14, col + 4);  printf("                ¡á¡á");
+		go(row - 15, col + 5);  printf("                ¡á¡á");
+		go(row - 16, col + 6);  printf("                ¡á¡á");
+		go(row - 17, col + 7);  printf("                ¡á¡á");
+		go(row - 18, col + 8);  printf("                ¡á¡á");
+		go(row - 19, col + 9);  printf("                ¡á¡á");
+		go(row - 20, col + 10); printf("                ¡á¡á");
+		go(row - 21, col + 11); printf("                ¡á¡á");
+		go(row - 22, col + 12); printf("                ¡á¡á");
+		go(row - 23, col + 13); printf("                ¡á¡á");
+		go(row - 24, col + 14); printf("                ¡á¡á");
+		go(row - 25, col + 15); printf("                ¡á¡á");
+		break;
+	case 2:
+		go(row - 10, col);      printf("    ¡á¡á¡á¡á¡á¡á");
+		go(row - 11, col + 1);  printf("  ¡á¡á¡á¡á¡á¡á¡á¡á");
+		go(row - 12, col + 2);  printf("¡á¡á            ¡á¡á");
+		go(row - 13, col + 3);  printf("¡á¡á            ¡á¡á");
+		go(row - 14, col + 4);  printf("¡á¡á            ¡á¡á"); 
+		go(row - 15, col + 5);  printf("¡á¡á            ¡á¡á"); 
+		go(row - 16, col + 6);  printf("           ¡á¡á¡á"); 
+		go(row - 17, col + 7);  printf("           ¡á¡á¡á"); 
+		go(row - 18, col + 8);  printf("       ¡á¡á¡á"); 
+		go(row - 19, col + 9);  printf("       ¡á¡á¡á");
+		go(row - 20, col + 10); printf("   ¡á¡á¡á");
+		go(row - 21, col + 11); printf("   ¡á¡á¡á"); 
+		go(row - 22, col + 12); printf("¡á¡á");
+		go(row - 23, col + 13); printf("¡á¡á");
+		go(row - 24, col + 14); printf("¡á¡á¡á¡á¡á¡á¡á¡á¡á¡á");
+		go(row - 25, col + 15); printf("¡á¡á¡á¡á¡á¡á¡á¡á¡á¡á");
+		break;
+	case 3:
+		go(row - 10, col);      printf("¡á¡á¡á¡á¡á¡á¡á¡á¡á¡á");
+		go(row - 11, col + 1);  printf("¡á¡á¡á¡á¡á¡á¡á¡á¡á¡á");
+		go(row - 12, col + 2);  printf("                ¡á¡á");
+		go(row - 13, col + 3);  printf("                ¡á¡á");
+		go(row - 14, col + 4);  printf("                ¡á¡á");
+		go(row - 15, col + 5);  printf("                ¡á¡á");
+		go(row - 16, col + 6);  printf("                ¡á¡á");
+		go(row - 17, col + 7);  printf("¡á¡á¡á¡á¡á¡á¡á¡á¡á¡á");
+		go(row - 18, col + 8);  printf("¡á¡á¡á¡á¡á¡á¡á¡á¡á¡á");
+		go(row - 19, col + 9);  printf("                ¡á¡á");
+		go(row - 20, col + 10); printf("                ¡á¡á");
+		go(row - 21, col + 11); printf("                ¡á¡á");
+		go(row - 22, col + 12); printf("                ¡á¡á");
+		go(row - 23, col + 13); printf("                ¡á¡á");
+		go(row - 24, col + 14); printf("¡á¡á¡á¡á¡á¡á¡á¡á¡á¡á");
+		go(row - 25, col + 15); printf("¡á¡á¡á¡á¡á¡á¡á¡á¡á¡á");
+		break;
+	case 4:
+		go(row - 10, col);      printf("¡á¡á            ¡á¡á");
+		go(row - 11, col + 1);  printf("¡á¡á            ¡á¡á");
+		go(row - 12, col + 2);  printf("¡á¡á            ¡á¡á");
+		go(row - 13, col + 3);  printf("¡á¡á            ¡á¡á");
+		go(row - 14, col + 4);  printf("¡á¡á            ¡á¡á");
+		go(row - 15, col + 5);  printf("¡á¡á            ¡á¡á");
+		go(row - 16, col + 6);  printf("¡á¡á            ¡á¡á");
+		go(row - 17, col + 7);  printf("  ¡á¡á¡á¡á¡á¡á¡á¡á¡á");
+		go(row - 18, col + 8);  printf("    ¡á¡á¡á¡á¡á¡á¡á¡á");
+		go(row - 19, col + 9);  printf("                ¡á¡á");
+		go(row - 20, col + 10); printf("                ¡á¡á");
+		go(row - 21, col + 11); printf("                ¡á¡á");
+		go(row - 22, col + 12); printf("                ¡á¡á");
+		go(row - 23, col + 13); printf("                ¡á¡á");
+		go(row - 24, col + 14); printf("                ¡á¡á");
+		go(row - 25, col + 15); printf("                ¡á¡á");
+		break;
+	case 5:
+		go(row - 10, col);      printf("¡á¡á¡á¡á¡á¡á¡á¡á¡á¡á");
+		go(row - 11, col + 1);  printf("¡á¡á¡á¡á¡á¡á¡á¡á¡á¡á");
+		go(row - 12, col + 2);  printf("¡á¡á");
+		go(row - 13, col + 3);  printf("¡á¡á");
+		go(row - 14, col + 4);  printf("¡á¡á");
+		go(row - 15, col + 5);  printf("¡á¡á");
+		go(row - 16, col + 6);  printf("¡á¡á");
+		go(row - 17, col + 7);  printf("¡á¡á¡á¡á¡á¡á¡á¡á¡á¡á");
+		go(row - 18, col + 8);  printf("¡á¡á¡á¡á¡á¡á¡á¡á¡á¡á");
+		go(row - 19, col + 9);  printf("                ¡á¡á");
+		go(row - 20, col + 10); printf("                ¡á¡á");
+		go(row - 21, col + 11); printf("                ¡á¡á");
+		go(row - 22, col + 12); printf("                ¡á¡á");
+		go(row - 23, col + 13); printf("                ¡á¡á");
+		go(row - 24, col + 14); printf("¡á¡á¡á¡á¡á¡á¡á¡á¡á¡á");
+		go(row - 25, col + 15); printf("¡á¡á¡á¡á¡á¡á¡á¡á¡á¡á");
+		break;
+	case 6:
+		go(row - 10, col);      printf("  ¡á¡á¡á¡á¡á¡á¡á");
+		go(row - 11, col + 1);  printf("  ¡á¡á¡á¡á¡á¡á¡á");
+		go(row - 12, col + 2);  printf("¡á¡á");
+		go(row - 13, col + 3);  printf("¡á¡á");
+		go(row - 14, col + 4);  printf("¡á¡á");
+		go(row - 15, col + 5);  printf("¡á¡á");
+		go(row - 16, col + 6);  printf("¡á¡á");
+		go(row - 17, col + 7);  printf("¡á¡á¡á¡á¡á¡á¡á¡á¡á¡á");
+		go(row - 18, col + 8);  printf("¡á¡á¡á¡á¡á¡á¡á¡á¡á¡á");
+		go(row - 19, col + 9);  printf("¡á¡á            ¡á¡á");
+		go(row - 20, col + 10); printf("¡á¡á            ¡á¡á");
+		go(row - 21, col + 11); printf("¡á¡á            ¡á¡á");
+		go(row - 22, col + 12); printf("¡á¡á            ¡á¡á");
+		go(row - 23, col + 13); printf("¡á¡á            ¡á¡á");
+		go(row - 24, col + 14); printf("  ¡á¡á¡á¡á¡á¡á¡á¡á");
+		go(row - 25, col + 15); printf("    ¡á¡á¡á¡á¡á¡á¡á");
+		break;
+	case 7:
+		go(row - 10, col);      printf("    ¡á¡á¡á¡á¡á¡á");
+		go(row - 11, col + 1);  printf("  ¡á¡á¡á¡á¡á¡á¡á¡á");
+		go(row - 12, col + 2);  printf("¡á¡á            ¡á¡á");
+		go(row - 13, col + 3);  printf("¡á¡á            ¡á¡á");
+		go(row - 14, col + 4);  printf("¡á¡á            ¡á¡á");
+		go(row - 15, col + 5);  printf("¡á¡á            ¡á¡á");
+		go(row - 16, col + 6);  printf("¡á¡á            ¡á¡á");
+		go(row - 17, col + 7);  printf("                ¡á¡á");
+		go(row - 18, col + 8);  printf("                ¡á¡á");
+		go(row - 19, col + 9);  printf("                ¡á¡á");
+		go(row - 20, col + 10); printf("                ¡á¡á");
+		go(row - 21, col + 11); printf("                ¡á¡á");
+		go(row - 22, col + 12); printf("                ¡á¡á");
+		go(row - 23, col + 13); printf("                ¡á¡á");
+		go(row - 24, col + 14); printf("                ¡á¡á");
+		go(row - 25, col + 15); printf("                ¡á¡á");
+		break;	
+	case 8:
+		go(row - 10, col);      printf("    ¡á¡á¡á¡á¡á¡á");
+		go(row - 11, col + 1);  printf("  ¡á¡á¡á¡á¡á¡á¡á¡á");
+		go(row - 12, col + 2);  printf("¡á¡á            ¡á¡á");
+		go(row - 13, col + 3);  printf("¡á¡á            ¡á¡á");
+		go(row - 14, col + 4);  printf("¡á¡á            ¡á¡á");
+		go(row - 15, col + 5);  printf("¡á¡á            ¡á¡á");
+		go(row - 16, col + 6);  printf("¡á¡á            ¡á¡á");
+		go(row - 17, col + 7);  printf("     ¡á¡á¡á¡á¡á¡á");
+		go(row - 18, col + 8);  printf("   ¡á¡á¡á¡á¡á¡á¡á");
+		go(row - 19, col + 9);  printf("¡á¡á            ¡á¡á");
+		go(row - 20, col + 10); printf("¡á¡á            ¡á¡á");
+		go(row - 21, col + 11); printf("¡á¡á            ¡á¡á");
+		go(row - 22, col + 12); printf("¡á¡á            ¡á¡á");
+		go(row - 23, col + 13); printf("¡á¡á            ¡á¡á");
+		go(row - 24, col + 14); printf("    ¡á¡á¡á¡á¡á¡á");
+		go(row - 25, col + 15); printf("    ¡á¡á¡á¡á¡á¡á");
+		break;
+	case 9:
+		go(row - 10, col);      printf("    ¡á¡á¡á¡á¡á¡á");
+		go(row - 11, col + 1);  printf("  ¡á¡á¡á¡á¡á¡á¡á¡á");
+		go(row - 12, col + 2);  printf("¡á¡á            ¡á¡á");
+		go(row - 13, col + 3);  printf("¡á¡á            ¡á¡á");
+		go(row - 14, col + 4);  printf("¡á¡á            ¡á¡á");
+		go(row - 15, col + 5);  printf("¡á¡á            ¡á¡á");
+		go(row - 16, col + 6);  printf("¡á¡á            ¡á¡á");
+		go(row - 17, col + 7);  printf("    ¡á¡á¡á¡á¡á¡á¡á¡á");
+		go(row - 18, col + 8);  printf("      ¡á¡á¡á¡á¡á¡á¡á");
+		go(row - 19, col + 9);  printf("                ¡á¡á");
+		go(row - 20, col + 10); printf("                ¡á¡á");
+		go(row - 21, col + 11); printf("                ¡á¡á");
+		go(row - 22, col + 12); printf("                ¡á¡á");
+		go(row - 23, col + 13); printf("                ¡á¡á");
+		go(row - 24, col + 14); printf("                ¡á¡á");
+		go(row - 25, col + 15); printf("                ¡á¡á");
+		break;
+	case 0:
+		go(row - 10, col);      printf("    ¡á¡á¡á¡á¡á¡á");
+		go(row - 11, col + 1);  printf("  ¡á¡á¡á¡á¡á¡á¡á¡á");
+		go(row - 12, col + 2);  printf("¡á¡á            ¡á¡á");
+		go(row - 13, col + 3);  printf("¡á¡á            ¡á¡á");
+		go(row - 14, col + 4);  printf("¡á¡á            ¡á¡á");
+		go(row - 15, col + 5);  printf("¡á¡á            ¡á¡á");
+		go(row - 16, col + 6);  printf("¡á¡á            ¡á¡á");
+		go(row - 17, col + 7);  printf("¡á¡á            ¡á¡á");
+		go(row - 18, col + 8);  printf("¡á¡á            ¡á¡á");
+		go(row - 19, col + 9);  printf("¡á¡á            ¡á¡á");
+		go(row - 20, col + 10); printf("¡á¡á            ¡á¡á");
+		go(row - 21, col + 11); printf("¡á¡á            ¡á¡á");
+		go(row - 22, col + 12); printf("¡á¡á            ¡á¡á");
+		go(row - 23, col + 13); printf("¡á¡á            ¡á¡á");
+		go(row - 24, col + 14); printf("    ¡á¡á¡á¡á¡á¡á");
+		go(row - 25, col + 15); printf("    ¡á¡á¡á¡á¡á¡á");
+		break;	
+	default: break;
+	}
 }

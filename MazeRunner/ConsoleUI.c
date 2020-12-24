@@ -1,7 +1,7 @@
 #include "MazeRunner.h"
 
 void DrawTitle() {
-    int row = CENTERROW - 76, col = CENTERCOL - 20;
+    int row = CENTERROW - 56, col = CENTERCOL - 20;
     go(row, col++);  printf("¡á¡á¡á¡á¡á¡á¡á¡á¡á¡á¡á¡á¡á¡á¡á¡á¡á¡á¡á¡á¡á¡á¡á¡á¡á¡á¡á¡á¡á¡á¡á¡á¡á¡á¡á¡á¡á¡á¡á¡á¡á¡á¡á¡á¡á¡á¡á¡á¡á¡á¡á¡á¡á¡á¡á¡á¡á¡á¡á¡á¡á¡á");
     go(row, col);    printf("¡á"); go(row + 122, col++); printf("¡á");
     go(row, col);    printf("¡á"); go(row + 122, col++); printf("¡á");
@@ -28,11 +28,11 @@ void DrawMenu() {
 }
 
 void PrintVersion() {
-    go(CENTERROW + 36, CENTERCOL - 11); printf("v Beta");
+    go(CENTERROW + 56, CENTERCOL - 11); printf("v Beta");
 }
 
 void PrintCopyright() {
-    go(CENTERROW - 38, CENTERCOL + 32); printf("Copyright 2020 Youngin Choi. All right reserved.");
+    go(CENTERROW - 18, CENTERCOL + 32); printf("Copyright 2020 Youngin Choi. All right reserved.");
 }
 
 int SelectMenu() {

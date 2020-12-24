@@ -11,9 +11,9 @@
 #define ENTER 13
 #define ESC 27
 
-#define CENTERROW 136
+#define CENTERROW 116
 #define CENTERCOL 32
-#define MENUINITROW CENTERROW - 36
+#define MENUINITROW CENTERROW - 16
 #define MENUINITCOL CENTERCOL + 3
 #define MENUCOLDIST 8
 
@@ -42,6 +42,7 @@ void KOREAN(int, int);
 // DrawText.c
 void DrawString(int, int, const char*);
 int DrawChar(int, int, char);
+void DrawNumber(int, int, int);
 
 // GamePlay.c
 int Play(int);
@@ -49,6 +50,7 @@ void ShowStartNEnd(int, int);
 int MazeRunner(int, int);
 void ShowMaze(int, int, int);
 void Arrow(int, int, int);
+void Score(clock_t);
 
 // MazeGenerator.c
 void MazeGenerator(int, int);
