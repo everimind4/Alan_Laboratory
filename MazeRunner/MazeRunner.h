@@ -11,10 +11,10 @@
 #define ENTER 13
 #define ESC 27
 
-#define CENTERROW 116
+#define CENTERROW 136
 #define CENTERCOL 32
-#define MENUINITROW 90
-#define MENUINITCOL 35
+#define MENUINITROW CENTERROW - 36
+#define MENUINITCOL CENTERCOL + 3
 #define MENUCOLDIST 8
 
 // ConsoleSetting.c
@@ -52,3 +52,6 @@ void Arrow(int, int, int);
 
 // MazeGenerator.c
 void MazeGenerator(int, int);
+void SetRight(int, int, int);
+void SetDown(int, int, int);
+int GetDown(int, int);

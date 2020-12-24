@@ -2,9 +2,6 @@
 
 int* field;
 int WIDTH, HEIGHT;
-void SetRight(int, int, int);
-void SetDown(int, int, int);
-int GetDown(int, int);
 
 void MazeGenerator(int row, int col) {
     srand((unsigned int)time(NULL)); // 난수 생성을 위한 시드 설정

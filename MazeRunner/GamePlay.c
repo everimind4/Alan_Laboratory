@@ -20,7 +20,7 @@ void ShowStartNEnd(int row, int col) {
     go(printrow - row * 2 - 1 - 8, printcol + 1); printf("Start ¡æ");
     go(printrow + row * 2 + 1, printcol + col * 2 - 1); printf("¡ç End");
 
-    DrawString(CENTERROW - 20, CENTERCOL - 3, "PRESS\nENTER");
+    DrawString(CENTERROW - 40, CENTERCOL - 3, "PRESS\nENTER");
 
     char key;
     while ((key = _getch()) != ENTER)
@@ -50,9 +50,9 @@ int MazeRunner(int row, int col) {
                 go(maze_x + x * 2, maze_y + y); printf("  ");
                 ShowMaze(row, col, 0);   
                 SetConsoleTextAttribute(GetStdHandle(STD_OUTPUT_HANDLE), 15 | 3 << 4);
-                DrawString(CENTERROW - 20, CENTERCOL - 2, "PAUSE");
-                go(CENTERROW - 3, CENTERCOL + 6); printf("ESC :: RESUME"); 
-                go(CENTERROW - 3, CENTERCOL + 8); printf("ENTER :: EXIT");
+                DrawString(CENTERROW - 40, CENTERCOL - 2, "PAUSE");
+                go(CENTERROW - 23, CENTERCOL + 6); printf("ESC :: RESUME"); 
+                go(CENTERROW - 23, CENTERCOL + 8); printf("ENTER :: EXIT");
                 SetConsoleTextAttribute(GetStdHandle(STD_OUTPUT_HANDLE), 14 | 3 << 4);
                 int select = 0;
                 while (1) {
@@ -99,6 +99,9 @@ int MazeRunner(int row, int col) {
                 Arrow(maze_x + x * 2, maze_y + y, direction);
                 if (maze_x + x * 2 == goal_x && maze_y + y == goal_y) {
                     SetConsoleTextAttribute(GetStdHandle(STD_OUTPUT_HANDLE), 14 | 3 << 4);
+                    for (int i = 0; i < 7; i++) {
+                        go(CENTERROW - 30, CENTERCOL + 10 + i); printf("                                                                ");
+                    }
                     free(field);
                     return 0;
                 }
