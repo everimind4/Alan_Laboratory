@@ -5,7 +5,7 @@ int main()
     Fullscreen();
     SetConsoleColor();
     CursorView(0);
-    do {        
+    do {
         ClearConsole();
         DrawTitle();
         DrawMenu();

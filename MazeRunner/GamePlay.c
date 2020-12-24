@@ -18,7 +18,7 @@ void ShowStartNEnd(int row, int col) {
 
     int printrow = 120, printcol = 34 - col;
     go(printrow - row * 2 - 1 - 8, printcol + 1); printf("Start ¡æ");
-    go(printrow + row * 2 + 1, printcol + col * 2 - 1); printf("¡ç End");
+    go(printrow + row * 2 + 1, printcol + 1); printf("¡ç End");
 
     DrawString(CENTERROW - 20, CENTERCOL - 3, "PRESS\nENTER");
 
@@ -26,7 +26,7 @@ void ShowStartNEnd(int row, int col) {
     while ((key = _getch()) != ENTER);
 
     go(printrow - row * 2 - 1 - 8, printcol + 1); printf("        ");
-    go(printrow + row * 2 + 1, printcol + col * 2 - 1); printf("      ");
+    go(printrow + row * 2 + 1, printcol + 1); printf("      ");
 
     ShowMaze(row, col, 0);
     Sleep(100);    
@@ -36,7 +36,7 @@ void ShowStartNEnd(int row, int col) {
 int MazeRunner(int row, int col) {
     SetConsoleTextAttribute(GetStdHandle(STD_OUTPUT_HANDLE), 4 | 3 << 4);
     int maze_x = 120 - row * 2 - 1, maze_y = 34 - col;
-    int goal_x = 120 + row * 2 - 1, goal_y = 34 + col - 1;
+    int goal_x = 120 + row * 2 - 1, goal_y = 34 - col + 1;
     int x = 0, y = 1, direction = RIGHT;
 
     Arrow(maze_x + x * 2, maze_y + y, direction);
@@ -137,12 +137,10 @@ void ShowMaze(int row, int col, int option) {
             if (i == 0 || i == col * 2)
                 for (int j = 0; j < row * 2 + 1; j++)
                     printf("¡á");
-            else {
-                if (i != 1)
-                    printf("¡á");
+            else if (i != 1) {
+                printf("¡á");
                 go(printrow + row * 2 - 1, printcol - 1);
-                if (i != col * 2 - 1)
-                    printf("¡á");
+                printf("¡á");
             }
             go(printrow - row * 2 - 1, printcol++);
         }

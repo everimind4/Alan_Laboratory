@@ -70,8 +70,8 @@ void MazeGenerator(int row, int col) {
 
     free(maze);
 
-    *(field + row * 2 + 1) = 0;							    // 입구 배치
-    *(field + (row * 2 + 1) * (col * 2 - 1) + row * 2) = 0;	// 출구 배치
+    *(field + row * 2 + 1) = 0;     // 입구 배치
+    *(field + row * 4 + 1) = 0;	// 출구 배치
 }
 
 void SetRight(int row, int col, int option) {
