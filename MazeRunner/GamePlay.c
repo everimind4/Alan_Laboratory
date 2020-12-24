@@ -20,7 +20,7 @@ void ShowStartNEnd(int row, int col) {
     go(printrow - row * 2 - 1 - 8, printcol + 1); printf("Start ¡æ");
     go(printrow + row * 2 + 1, printcol + col * 2 - 1); printf("¡ç End");
 
-    DrawString(CENTERROW - 40, CENTERCOL - 3, "PRESS\nENTER");
+    DrawString(CENTERROW - 20, CENTERCOL - 3, "PRESS\nENTER");
 
     char key;
     while ((key = _getch()) != ENTER);
@@ -42,6 +42,8 @@ int MazeRunner(int row, int col) {
     Arrow(maze_x + x * 2, maze_y + y, direction);
     char key;
 
+    clock_t start = clock();
+
     while (1) {
         if (_kbhit()) {
             key = _getch();
@@ -50,9 +52,9 @@ int MazeRunner(int row, int col) {
                 go(maze_x + x * 2, maze_y + y); printf("  ");
                 ShowMaze(row, col, 0);   
                 SetConsoleTextAttribute(GetStdHandle(STD_OUTPUT_HANDLE), 15 | 3 << 4);
-                DrawString(CENTERROW - 40, CENTERCOL - 2, "PAUSE");
-                go(CENTERROW - 23, CENTERCOL + 6); printf("ESC :: RESUME"); 
-                go(CENTERROW - 23, CENTERCOL + 8); printf("ENTER :: EXIT");
+                DrawString(CENTERROW - 20, CENTERCOL - 2, "PAUSE");
+                go(CENTERROW - 3, CENTERCOL + 6); printf("ESC :: RESUME"); 
+                go(CENTERROW - 3, CENTERCOL + 8); printf("ENTER :: EXIT");
                 SetConsoleTextAttribute(GetStdHandle(STD_OUTPUT_HANDLE), 14 | 3 << 4);
                 int select = 0;
                 while (1) {
@@ -98,19 +100,12 @@ int MazeRunner(int row, int col) {
                 }
                 Arrow(maze_x + x * 2, maze_y + y, direction);
                 if (maze_x + x * 2 == goal_x && maze_y + y == goal_y) {
-                    SetConsoleTextAttribute(GetStdHandle(STD_OUTPUT_HANDLE), 14 | 3 << 4);
+                    clock_t end = clock();
                     for (int i = 0; i < 9; i++) {
-                        go(CENTERROW - 95, CENTERCOL - 2 + i);
+                        go(CENTERROW - 75, CENTERCOL - 2 + i);
                         printf("                                                                                                                                                              ");
                     }
-                    SetConsoleTextAttribute(GetStdHandle(STD_OUTPUT_HANDLE), 15 | 3 << 4);
-                    DrawString(CENTERROW - 91, CENTERCOL, "CONGRATULATIONS!");
-                    for (int i = 0; i < 4; i++) {
-                        go(CENTERROW - 29, CENTERCOL + 7 + i);
-                        printf("                         ");
-                    }
-                    go(CENTERROW - 27, CENTERCOL + 8); printf("     ENTER TO EXIT     ");
-                    SetConsoleTextAttribute(GetStdHandle(STD_OUTPUT_HANDLE), 14 | 3 << 4);
+                    Score(end - start);
                     while ((key = _getch()) != ENTER);
                     free(field);
                     return 1;
@@ -171,4 +166,56 @@ void Arrow(int row, int col, int direction) {
         printf("¢º");
         break;
     }
+}
+
+void Score(clock_t time) {
+    int row = CENTERROW - 52, col = CENTERCOL - 5;
+
+    SetConsoleTextAttribute(GetStdHandle(STD_OUTPUT_HANDLE), 15 | 3 << 4);
+    DrawString(row - 19, col + 5, "CONGRATULATIONS!"); Sleep(1500);
+    SetConsoleTextAttribute(GetStdHandle(STD_OUTPUT_HANDLE), 14 | 3 << 4);
+    ClearConsole(); Sleep(500);
+    DrawString(row + 27, col - 15, "Records"); Sleep(1000);
+    SetConsoleTextAttribute(GetStdHandle(STD_OUTPUT_HANDLE), 10 | 3 << 4);
+
+    if (time >= 6000000) {
+        SetConsoleTextAttribute(GetStdHandle(STD_OUTPUT_HANDLE), 4 | 3 << 4);
+        DrawString(row + 20, col, "Time out!");
+        SetConsoleTextAttribute(GetStdHandle(STD_OUTPUT_HANDLE), 14 | 3 << 4);
+    }
+    else {
+        if (time >= 60000) {
+            if (time / 60000 > 9)
+                DrawNumber(row, col, time / 600000 % 10);
+            row += 28;
+            DrawNumber(row, col, time / 60000 % 10);
+            row += 5;
+            DrawChar(row, col + 11, 'M');
+            row += 42;
+            DrawNumber(row, col, time % 60000 / 10000 % 10);
+            row += 28;
+            DrawNumber(row, col, time / 1000 % 10);
+            row += 5;
+            DrawChar(row, col + 11, 'S');
+        }
+        else {
+            row += 18;
+            if (time / 1000 > 9)
+                DrawNumber(row, col, time / 10000 % 10);
+            row += 28;
+            DrawNumber(row, col, time / 1000 % 10);
+            go(row + 2, col + 14); printf("¡á¡á");
+            go(row + 1, col + 15); printf("¡á¡á");
+            row += 36;
+            DrawNumber(row, col, time / 100 % 10);
+            row += 5;
+            DrawChar(row, col + 11, 'S');
+            row -= 39;       
+        }
+    }
+
+    Sleep(1000);
+    
+    SetConsoleTextAttribute(GetStdHandle(STD_OUTPUT_HANDLE), 14 | 3 << 4);
+    DrawString(CENTERROW - 45, CENTERCOL + 23, "PRESS   ENTER");
 }
