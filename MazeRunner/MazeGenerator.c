@@ -1,42 +1,90 @@
 #include "MazeRunner.h"
 
 int* field;
+int WIDTH, HEIGHT;
+void SetRight(int, int, int);
+void SetDown(int, int, int);
+int GetDown(int, int);
 
 void MazeGenerator(int row, int col) {
     srand((unsigned int)time(NULL)); // 난수 생성을 위한 시드 설정
+    WIDTH = row, HEIGHT = col;
 
-    // 미로의 가로와 세로 칸 수와 벽을 포함한 전체 미로 배열 동적 할당
-    field = (int*)malloc(sizeof(int) * (row * 2 + 1) * (col * 2 + 1));
-    for (int i = 0; i < col * 2 + 1; i++)	            // 모든 행을 순회
-        for (int j = 0; j < row * 2 + 1; j++)	        // 해당 행 내의 모든 열 요소를 순회
-            if (i % 2 == 0 || j % 2 == 0)		        // 미로가 연결되지 않았으므로 미로 공간을 제외한 모든 배열 칸
-                *(field + (row * 2 + 1) * i + j) = 1;	// 벽이 있다고 표시하기
-            else								        // 미로 공간에 해당하는 칸에 대해
-                *(field + (row * 2 + 1) * i + j) = 0;	// 벽이 없다고 표시하기
+    char* maze = (char*)malloc(sizeof(char) * WIDTH);
+    if (maze == NULL) return;
+    for (int i = 0; i < WIDTH; i++)
+        maze[i] = 0;
 
-    int lastgroupwidth = 1;						        // 인접한 그룹을 랜덤하게 연결할 때 사용하는 변수
+    field = (int*)malloc(sizeof(int) * (HEIGHT * 2 + 1) * (WIDTH * 2 + 1)); // 전체 미로 공간 저장
+    if (field == NULL) return;
 
-    for (int i = 0; i < col; i++)			            // 모든 행을 순회
-        for (int j = 0; j < row; j++)			        // 해당 행 내의 모든 열 요소를 순회
-            if (j != row - 1)	                        // 마지막 열 요소가 아닌 경우
-                if (rand() % 2) {					    // 1/2 확률로 그룹을 확장
-                    *(field + (row * 2 + 1) * (i * 2 + 1) + (j + 1) * 2) = 0;	// 해당 칸의 오른쪽 벽 제거
-                    lastgroupwidth++;					// 그룹이 확장되었으므로 해당 행에서 직전에 확장된 그룹의 길이를 저장
+    for (int i = 0; i < HEIGHT * 2 + 1; i++)
+        for (int j = 0; j < WIDTH * 2 + 1; j++)
+            if (i % 2 == 0 || j == 0 || j == WIDTH * 2)
+                *(field + i * (WIDTH * 2 + 1) + j) = 1;
+            else
+                *(field + i * (WIDTH * 2 + 1) + j) = 0;
+
+    int set = 0;
+    int lastsetwidth = 1;
+
+    for (int i = 0; i < HEIGHT; i++) {
+        for (int j = 0; j < WIDTH; j++)
+            if (maze[j] == 0)
+                maze[j] = ++set;
+        if (i != HEIGHT - 1) {
+            for (int j = 0; j < WIDTH - 1; j++)
+                if (maze[j + 1] == maze[j])
+                    SetRight(i, j, 1);
+            for (int j = 0; j < WIDTH - 1; j++)
+                if (rand() % 2)
+                    SetRight(i, j, 1);
+                else
+                    maze[j + 1] = maze[j];
+            for (int j = 0; j < WIDTH; j++)
+                if (j != WIDTH - 1) {
+                    if (maze[j + 1] == maze[j]) {
+                        lastsetwidth++;
+                        if (rand() % 2)
+                            SetDown(i, j, 0);
+                    }
+                    else {
+                        SetDown(i, j + 1 - lastsetwidth + rand() % lastsetwidth, 0);
+                        lastsetwidth = 1;
+                    }
                 }
-                else if (i != col - 1) {			    // 그룹이 확장되지 않은 경우, 마지막 행이 아닐 때
-                    int rnum = rand() % lastgroupwidth;	// 해당 그룹 내 열 요소를 하나만 골라서
-                    *(field + (row * 2 + 1) * (i + 1) * 2 + (j - lastgroupwidth + 1 + rnum) * 2 + 1) = 0; // 아래쪽 벽을 제거
-                    lastgroupwidth = 1;					// 그룹 길이를 나타내는 변수 재설정
+                else {
+                    if (maze[j] != maze[j - 1])
+                        SetDown(i, j, 0);
+                    else {
+                        SetDown(i, j + 1 - lastsetwidth + rand() % lastsetwidth, 0);
+                        lastsetwidth = 1;
+                    }
                 }
-            else	                                    // 마지막 열 요소인 경우
-                if (lastgroupwidth == 1)				// 마지막 열 요소가 이전 그룹과 별개의 그룹일 경우
-                    *(field + (row * 2 + 1) * (i + 1) * 2 + j * 2 + 1) = 0;	// 아래 방향으로 벽 제거
-                else {									// 마지막 열 요소가 이전 그룹과 동일한 그룹에 속한 경우
-                    int rnum = rand() % lastgroupwidth;	// 해당 그룹 내 열 요소를 하나만 골라서
-                    *(field + (row * 2 + 1) * (i + 1) * 2 + (j - lastgroupwidth + 1 + rnum) * 2 + 1) = 0;	// 아래쪽 벽을 제거
-                    lastgroupwidth = 1;					// 그룹 길이를 나타내는 변수 재설정
-                }
+            for (int j = 0; j < WIDTH; j++)
+                if (GetDown(i, j) == 1)
+                    maze[j] = 0;
+        }
+        else
+            for (int j = 0; j < WIDTH - 1; j++)
+                if (maze[j + 1] == maze[j])
+                    SetRight(i, j, 1);
+    }
+
+    free(maze);
 
     *(field + row * 2 + 1) = 0;							    // 입구 배치
-    *(field + (row * 2 + 1) * (col * 2 - 1) + row * 2) = 0;	// 출구 배치
+    *(field + (row * 2 + 1) * (col * 2 - 1) + row * 2) = 0;	// 출구 배치    
+}
+
+void SetRight(int row, int col, int option) {
+    *(field + (row * 2 + 1) * (WIDTH * 2 + 1) + (col + 1) * 2) = option;
+}
+
+void SetDown(int row, int col, int option) {
+    *(field + (row + 1) * 2 * (WIDTH * 2 + 1) + col * 2 + 1) = option;
+}
+
+int GetDown(int row, int col) {
+    return *(field + (row + 1) * 2 * (WIDTH * 2 + 1) + col * 2 + 1);
 }
