@@ -349,14 +349,14 @@ void DrawNumber(int row, int col, int number) {
 		go(row - 14, col + 4);  printf("¡á¡á            ¡á¡á");
 		go(row - 15, col + 5);  printf("¡á¡á            ¡á¡á");
 		go(row - 16, col + 6);  printf("¡á¡á            ¡á¡á");
-		go(row - 17, col + 7);  printf("    ¡á¡á¡á¡á¡á¡á¡á");
+		go(row - 17, col + 7);  printf("  ¡á¡á¡á¡á¡á¡á¡á¡á");
 		go(row - 18, col + 8);  printf("  ¡á¡á¡á¡á¡á¡á¡á¡á");
 		go(row - 19, col + 9);  printf("¡á¡á            ¡á¡á");
 		go(row - 20, col + 10); printf("¡á¡á            ¡á¡á");
 		go(row - 21, col + 11); printf("¡á¡á            ¡á¡á");
 		go(row - 22, col + 12); printf("¡á¡á            ¡á¡á");
 		go(row - 23, col + 13); printf("¡á¡á            ¡á¡á");
-		go(row - 24, col + 14); printf("    ¡á¡á¡á¡á¡á¡á");
+		go(row - 24, col + 14); printf("  ¡á¡á¡á¡á¡á¡á¡á¡á");
 		go(row - 25, col + 15); printf("    ¡á¡á¡á¡á¡á¡á");
 		break;
 	case 9:
@@ -392,7 +392,7 @@ void DrawNumber(int row, int col, int number) {
 		go(row - 21, col + 11); printf("¡á¡á            ¡á¡á");
 		go(row - 22, col + 12); printf("¡á¡á            ¡á¡á");
 		go(row - 23, col + 13); printf("¡á¡á            ¡á¡á");
-		go(row - 24, col + 14); printf("    ¡á¡á¡á¡á¡á¡á");
+		go(row - 24, col + 14); printf("  ¡á¡á¡á¡á¡á¡á¡á¡á");
 		go(row - 25, col + 15); printf("    ¡á¡á¡á¡á¡á¡á");
 		break;	
 	default: break;
