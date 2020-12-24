@@ -1,11 +1,7 @@
-﻿  ConsoleSetting.c
-  ConsoleUI.c
-  DrawText.c
-  MazeGenerator.c
-  MazeRunner.c
-  GamePlay.c
+﻿  MazeRunner.c
   코드를 생성하고 있습니다.
-  Previous IPDB not found, fall back to full compilation.
-  All 36 functions were compiled because no usable IPDB/IOBJ from previous compilation was found.
+  36 of 36 functions (100.0%) were compiled.
+    1 functions were new in current compilation
+    0 functions had inline decision re-evaluated but remain unchanged
   코드를 생성했습니다.
   MazeRunner.vcxproj -> E:\Alan Choi\Documents\Visual Studio 2019\GitHub\Alan_Laboratory\MazeRunner\Release\MazeRunner.exe
