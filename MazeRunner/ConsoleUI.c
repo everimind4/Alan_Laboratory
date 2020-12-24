@@ -28,7 +28,7 @@ void DrawMenu() {
 }
 
 void PrintVersion() {
-    go(CENTERROW + 56, CENTERCOL - 11); printf("v Beta");
+    go(CENTERROW + 56, CENTERCOL - 11); printf("v1.0.0");
 }
 
 void PrintCopyright() {
