@@ -23,7 +23,7 @@ void ShowStartNEnd(int row, int col) {
     DrawString(CENTERROW - 40, CENTERCOL - 3, "PRESS\nENTER");
 
     char key;
-    while ((key = _getch()) != ENTER)
+    while ((key = _getch()) != ENTER);
 
     go(printrow - row * 2 - 1 - 8, printcol + 1); printf("        ");
     go(printrow + row * 2 + 1, printcol + col * 2 - 1); printf("      ");
@@ -99,11 +99,21 @@ int MazeRunner(int row, int col) {
                 Arrow(maze_x + x * 2, maze_y + y, direction);
                 if (maze_x + x * 2 == goal_x && maze_y + y == goal_y) {
                     SetConsoleTextAttribute(GetStdHandle(STD_OUTPUT_HANDLE), 14 | 3 << 4);
-                    for (int i = 0; i < 7; i++) {
-                        go(CENTERROW - 30, CENTERCOL + 10 + i); printf("                                                                ");
+                    for (int i = 0; i < 9; i++) {
+                        go(CENTERROW - 95, CENTERCOL - 2 + i);
+                        printf("                                                                                                                                                              ");
                     }
+                    SetConsoleTextAttribute(GetStdHandle(STD_OUTPUT_HANDLE), 15 | 3 << 4);
+                    DrawString(CENTERROW - 91, CENTERCOL, "CONGRATULATIONS!");
+                    for (int i = 0; i < 4; i++) {
+                        go(CENTERROW - 29, CENTERCOL + 7 + i);
+                        printf("                         ");
+                    }
+                    go(CENTERROW - 27, CENTERCOL + 8); printf("     ENTER TO EXIT     ");
+                    SetConsoleTextAttribute(GetStdHandle(STD_OUTPUT_HANDLE), 14 | 3 << 4);
+                    while ((key = _getch()) != ENTER);
                     free(field);
-                    return 0;
+                    return 1;
                 }
             }
         }
